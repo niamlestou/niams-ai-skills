@@ -1,0 +1,1442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Report Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Figtree:ital,wght@0,400..700;1,400..500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --bg: #f6f6fa;
+  --surface: #ffffff;
+  --surface-2: #efeef7;
+  --ink: #17151f;
+  --ink-2: #45425a;
+  --muted: #625f79;
+  --line: #e2e0ec;
+  --line-strong: #cfcce0;
+  --violet: #7b2ff7;
+  --violet-ink: #5a17cf;
+  --violet-soft: #efe7ff;
+  --azure: #1e90ff;
+  --azure-ink: #0b62c4;
+  --azure-soft: #e3f0ff;
+  --indigo: #5050f8;
+  --good: #11724e;
+  --good-soft: #e0f4ec;
+  --stop: #c0264f;
+  --stop-soft: #fbe6ec;
+  --code-bg: #f0eff7;
+  --shadow: 0 1px 2px rgb(23 21 31 / 0.05), 0 8px 24px -12px rgb(23 21 31 / 0.12);
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0c0e11;
+    --surface: #14161c;
+    --surface-2: #1a1d25;
+    --ink: #eceaf4;
+    --ink-2: #bcb9cf;
+    --muted: #8f8ca6;
+    --line: #262a34;
+    --line-strong: #353a47;
+    --violet-ink: #b794ff;
+    --violet-soft: #231a3a;
+    --azure-ink: #6cb3ff;
+    --azure-soft: #0f2238;
+    --good: #45c796;
+    --good-soft: #0f2a21;
+    --stop: #ff7a9c;
+    --stop-soft: #33141f;
+    --code-bg: #1b1e27;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c0e11;
+  --surface: #14161c;
+  --surface-2: #1a1d25;
+  --ink: #eceaf4;
+  --ink-2: #bcb9cf;
+  --muted: #8f8ca6;
+  --line: #262a34;
+  --line-strong: #353a47;
+  --violet-ink: #b794ff;
+  --violet-soft: #231a3a;
+  --azure-ink: #6cb3ff;
+  --azure-soft: #0f2238;
+  --good: #45c796;
+  --good-soft: #0f2a21;
+  --stop: #ff7a9c;
+  --stop-soft: #33141f;
+  --code-bg: #1b1e27;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.62 var(--body);
+  padding-inline: 20px;
+  padding-block: 0 64px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--violet-ink); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--azure); outline-offset: 2px; border-radius: 4px;
+}
+code, .mono { font-family: var(--mono); font-size: 0.88em; }
+:not(pre) > code { background: var(--code-bg); padding: 0.1em 0.35em; border-radius: 4px; }
+pre {
+  font: 400 13px/1.55 var(--mono);
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  margin: 0;
+}
+strong { font-weight: 650; }
+h1, h2, h3, h4 { font-family: var(--display); text-wrap: balance; margin: 0; color: var(--ink); }
+p { margin: 0; }
+ul, ol { margin: 0; padding-left: 1.25em; }
+li + li { margin-top: 0.35em; }
+
+/* ---------- Shell ---------- */
+.shell { max-width: 1180px; margin-inline: auto; }
+.masthead {
+  padding-block: 56px 36px;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 18px;
+}
+.brandline {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  font: 600 12px/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.brandmark {
+  font: 800 15px/1 var(--display); font-stretch: 125%; letter-spacing: 0.02em; color: var(--ink); text-transform: none;
+}
+.brandmark span { color: var(--violet-ink); }
+.masthead h1 {
+  font-size: clamp(34px, 5.4vw, 60px);
+  font-weight: 800;
+  font-stretch: 118%;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  max-width: 16ch;
+}
+.lede { font-size: clamp(17px, 1.6vw, 19px); color: var(--ink-2); max-width: 64ch; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; color: var(--muted); }
+.meta b { color: var(--ink-2); font-weight: 600; }
+
+.layout { display: grid; grid-template-columns: 1fr; gap: 40px; padding-top: 36px; }
+@media (min-width: 900px) {
+  .layout { grid-template-columns: 220px minmax(0, 1fr); gap: 44px; }
+}
+
+/* ---------- Table of contents ---------- */
+.toc { font-size: 14px; }
+.toc details { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.toc summary { cursor: pointer; padding: 12px 16px; font-weight: 650; list-style: none; display: flex; justify-content: space-between; }
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::after { content: "+"; font-family: var(--mono); color: var(--muted); }
+.toc details[open] summary::after { content: "–"; }
+.toc ol { list-style: none; padding: 0 16px 14px; margin: 0; display: grid; gap: 2px; }
+.toc li { margin: 0; }
+.toc a { display: block; padding: 5px 0; color: var(--ink-2); text-decoration: none; line-height: 1.35; }
+.toc a:hover { color: var(--violet-ink); }
+.toc .sub a { padding-left: 14px; font-size: 13px; color: var(--muted); }
+@media (min-width: 900px) {
+  .toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; max-height: calc(100vh - 48px); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+  .toc details { border: 0; background: none; }
+  .toc summary { padding: 0 0 12px 2px; pointer-events: none; font: 600 11px/1 var(--mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .toc summary::after { content: none; }
+  .toc ol { padding: 0; gap: 0; border-left: 1px solid var(--line); }
+  .toc a {
+    padding: 6px 10px 6px 16px; margin-left: -1px; border-left: 2px solid transparent; border-radius: 0 8px 8px 0;
+    transition: color .15s ease, background-color .15s ease, border-color .15s ease, padding-left .15s ease;
+  }
+  .toc a:hover { color: var(--violet-ink); background: var(--violet-soft); border-left-color: var(--violet); padding-left: 20px; }
+  .toc a.is-active { color: var(--violet-ink); font-weight: 650; border-left-color: var(--violet); background: color-mix(in srgb, var(--violet-soft) 55%, transparent); }
+  .toc .sub a { padding-left: 28px; }
+  .toc .sub a:hover { padding-left: 32px; }
+  @media (prefers-reduced-motion: reduce) { .toc a, .toc a:hover { transition: none; padding-left: 16px; } }
+}
+
+/* ---------- Sections ---------- */
+main { min-width: 0; display: grid; gap: 72px; }
+section { display: grid; gap: 22px; min-width: 0; }
+.kicker { font: 600 11.5px/1 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--violet-ink); }
+section > header { display: grid; gap: 10px; }
+h2 { font-size: clamp(26px, 3vw, 34px); font-weight: 780; font-stretch: 112%; line-height: 1.12; letter-spacing: -0.01em; }
+h3 { font-size: 21px; font-weight: 720; font-stretch: 106%; line-height: 1.25; }
+h4 { font: 650 12px/1.2 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.prose { display: grid; gap: 14px; max-width: 70ch; color: var(--ink-2); }
+.prose strong { color: var(--ink); }
+
+/* ---------- Bottom line ---------- */
+.bluf {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: clamp(20px, 3vw, 32px);
+  display: grid;
+  gap: 26px;
+}
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.figure { border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: grid; gap: 6px; background: var(--bg); }
+.figure .num { font: 780 clamp(28px, 3.2vw, 36px)/1 var(--display); font-stretch: 108%; font-variant-numeric: tabular-nums; color: var(--ink); }
+.figure .num small { font-size: 0.5em; font-weight: 600; color: var(--muted); margin-left: 2px; }
+.figure .lbl { font-size: 14px; color: var(--ink-2); line-height: 1.4; }
+.figure.accent { border-color: color-mix(in srgb, var(--violet) 45%, var(--line)); background: var(--violet-soft); }
+.recs { display: grid; gap: 10px; counter-reset: rec; list-style: none; padding: 0; }
+.recs li { margin: 0; display: grid; grid-template-columns: 26px 1fr; gap: 10px; color: var(--ink-2); }
+.recs li::before {
+  counter-increment: rec; content: counter(rec);
+  font: 600 12px/26px var(--mono); text-align: center; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--violet); color: #fff;
+}
+.recs li strong { color: var(--ink); }
+.two-col { display: grid; gap: 22px; }
+@media (min-width: 820px) { .two-col { grid-template-columns: 1fr 1fr; } }
+.decide { border-top: 1px dashed var(--line-strong); padding-top: 20px; display: grid; gap: 10px; }
+.decide ul { color: var(--ink-2); }
+
+/* ---------- Hosting targets ---------- */
+.targets { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.target { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; }
+.target h3 { font-size: 18px; }
+.target p { color: var(--ink-2); font-size: 15px; }
+.target .where { font: 500 12.5px/1.4 var(--mono); color: var(--azure-ink); }
+.target ul { font-size: 14.5px; color: var(--ink-2); }
+
+/* ---------- Architecture lanes ---------- */
+.arch { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 10px; display: grid; gap: 8px; }
+.lane { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 12px; border-radius: 10px; background: var(--bg); }
+@media (min-width: 760px) { .lane { grid-template-columns: 150px 1fr; align-items: start; } }
+.lane-name { font: 600 11.5px/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding-top: 7px; }
+.lane-name b { display: block; font: 700 14px/1.3 var(--display); letter-spacing: 0; text-transform: none; color: var(--ink); }
+.nodes { display: flex; flex-wrap: wrap; gap: 8px; }
+.node {
+  border: 1px solid var(--line-strong); background: var(--surface); border-radius: 8px; padding: 7px 11px;
+  font-size: 13.5px; line-height: 1.3; display: grid; gap: 1px;
+}
+.node small { color: var(--muted); font-size: 12px; }
+.node.v { border-color: color-mix(in srgb, var(--violet) 55%, var(--line)); background: var(--violet-soft); }
+.node.a { border-color: color-mix(in srgb, var(--azure) 55%, var(--line)); background: var(--azure-soft); }
+.group { border: 1px dashed var(--line-strong); border-radius: 10px; padding: 8px; display: grid; gap: 6px; flex: 1 1 260px; }
+.group-label { font: 600 11px/1.2 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.flows { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.flow { border-left: 3px solid var(--azure); padding: 4px 0 4px 14px; font-size: 14.5px; color: var(--ink-2); }
+.flow b { display: block; color: var(--ink); font-weight: 650; margin-bottom: 2px; }
+.flow.v { border-left-color: var(--violet); }
+.flow.i { border-left-color: var(--indigo); }
+
+/* ---------- Service cards ---------- */
+.service { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.service > header {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 18px 22px; border-bottom: 1px solid var(--line);
+}
+.service > header h3 { font-size: 23px; margin-right: auto; }
+.chip {
+  font: 600 11.5px/1 var(--mono); letter-spacing: 0.04em; padding: 6px 9px; border-radius: 999px;
+  background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); white-space: nowrap;
+}
+.chip.cost { background: var(--violet-soft); color: var(--violet-ink); border-color: transparent; }
+.chip.pref { background: var(--azure-soft); color: var(--azure-ink); border-color: transparent; }
+.svc-body { padding: 20px 22px 24px; display: grid; gap: 22px; }
+.facets { display: grid; gap: 18px 28px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .facets { grid-template-columns: 1fr 1fr; } }
+.facet { display: grid; gap: 6px; align-content: start; }
+.facet p, .facet li { font-size: 15px; color: var(--ink-2); }
+.facet ul { display: grid; gap: 4px; }
+.facet li + li { margin-top: 0; }
+.setup { border-top: 1px solid var(--line); padding-top: 18px; display: grid; gap: 10px; }
+.setup ol { display: grid; gap: 8px; padding-left: 1.4em; }
+.setup li { font-size: 15px; color: var(--ink-2); padding-left: 4px; }
+.setup li + li { margin-top: 0; }
+.setup li::marker { font: 600 13px var(--mono); color: var(--violet-ink); }
+.note {
+  border-radius: 10px; padding: 12px 14px; font-size: 14.5px; color: var(--ink-2);
+  background: var(--azure-soft); border: 1px solid color-mix(in srgb, var(--azure) 30%, transparent);
+}
+.note.stop { background: var(--stop-soft); border-color: color-mix(in srgb, var(--stop) 35%, transparent); }
+.note.good { background: var(--good-soft); border-color: color-mix(in srgb, var(--good) 35%, transparent); }
+.note b { color: var(--ink); }
+.stack-list { display: grid; gap: 18px; }
+
+/* ---------- Tables ---------- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; min-width: 560px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 11.5px/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--surface-2); }
+tbody tr:last-child td { border-bottom: 0; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; font-family: var(--mono); font-size: 13.5px; }
+tr.total td { font-weight: 700; color: var(--ink); background: var(--violet-soft); }
+tr.total td.n { font-size: 14px; }
+td .sub { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.dim { color: var(--muted); }
+
+/* ---------- Estimator ---------- */
+.estimator { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: clamp(18px, 3vw, 28px); display: grid; gap: 22px; }
+.est-grid { display: grid; gap: 22px; }
+@media (min-width: 860px) { .est-grid { grid-template-columns: 1.1fr 1fr; } }
+.controls { display: grid; gap: 18px; }
+.control { display: grid; gap: 6px; }
+.control label { font-weight: 600; font-size: 14.5px; display: flex; justify-content: space-between; gap: 12px; }
+.control output { font: 600 14px var(--mono); color: var(--violet-ink); font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: var(--violet); }
+select {
+  font: inherit; font-size: 15px; color: var(--ink); background: var(--bg); border: 1px solid var(--line-strong);
+  border-radius: 8px; padding: 9px 10px; width: 100%;
+}
+.results { display: grid; gap: 10px; align-content: start; }
+.res-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-2); }
+.res-row b { font: 600 15px var(--mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.res-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-top: 6px; }
+.res-total span { font-weight: 650; }
+.res-total b { font: 780 34px/1 var(--display); font-stretch: 108%; color: var(--violet-ink); font-variant-numeric: tabular-nums; }
+.est-foot { font-size: 13.5px; color: var(--muted); }
+
+/* ---------- API section ---------- */
+.steps { display: grid; gap: 10px; list-style: none; padding: 0; counter-reset: st; }
+.steps li { margin: 0; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--ink-2); font-size: 15px; }
+.steps li::before {
+  counter-increment: st; content: counter(st);
+  font: 700 13px/30px var(--mono); text-align: center; width: 30px; height: 30px; border-radius: 8px;
+  background: var(--azure-soft); color: var(--azure-ink);
+}
+.steps li b { color: var(--ink); }
+.compare { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.opt { border: 1px solid var(--line); border-radius: 12px; padding: 16px; background: var(--surface); display: grid; gap: 8px; align-content: start; }
+.opt.pick { border-color: color-mix(in srgb, var(--violet) 55%, var(--line)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--violet) 30%, transparent); }
+.opt h4 { display: flex; gap: 8px; align-items: center; }
+.tag { font: 600 10.5px/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 7px; border-radius: 999px; background: var(--violet); color: #fff; }
+.opt p, .opt li { font-size: 14.5px; color: var(--ink-2); }
+
+/* ---------- Tools verdicts ---------- */
+.verdict { display: inline-block; font: 600 11.5px/1 var(--mono); letter-spacing: 0.04em; padding: 6px 9px; border-radius: 6px; }
+.verdict.now { background: var(--good-soft); color: var(--good); }
+.verdict.later { background: var(--azure-soft); color: var(--azure-ink); }
+.verdict.opt { background: var(--surface-2); color: var(--ink-2); }
+
+/* ---------- Stages ---------- */
+.stages { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.stage { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: grid; gap: 10px; align-content: start; }
+.stage .when { font: 600 12px/1.3 var(--mono); color: var(--azure-ink); }
+.stage p, .stage li { font-size: 14.5px; color: var(--ink-2); }
+.stage .trig { border-top: 1px dashed var(--line-strong); padding-top: 10px; }
+
+.checklist { list-style: none; padding: 0; display: grid; gap: 8px; }
+.checklist li { margin: 0; display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 15px; color: var(--ink-2); }
+.checklist li::before { content: ""; width: 16px; height: 16px; margin-top: 4px; border: 1.5px solid var(--line-strong); border-radius: 4px; background: var(--surface); }
+.week { display: grid; gap: 12px; }
+.week h3 { font-size: 17px; }
+
+.sources { columns: 1; column-gap: 32px; font-size: 14px; }
+@media (min-width: 820px) { .sources { columns: 2; } }
+.sources section { break-inside: avoid; display: block; margin-bottom: 18px; }
+.sources h4 { margin-bottom: 6px; }
+.sources ul { list-style: none; padding: 0; }
+.sources li { margin: 0 0 4px; color: var(--muted); }
+
+footer.end { border-top: 1px solid var(--line); margin-top: 72px; padding-top: 22px; font-size: 13.5px; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+</style>
+<style>
+/* ---------- SEO plan additions ---------- */
+.timeline { display: grid; gap: 0; border-left: 2px solid var(--line-strong); margin-left: 8px; }
+.phase { position: relative; padding: 0 0 26px 26px; display: grid; gap: 10px; }
+.phase:last-child { padding-bottom: 0; }
+.phase::before {
+  content: ""; position: absolute; left: -9px; top: 4px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--surface); border: 3px solid var(--violet);
+}
+.phase.later::before { border-color: var(--azure); }
+.phase-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.phase-head .when { font: 600 12.5px/1.2 var(--mono); color: var(--violet-ink); }
+.phase.later .when { color: var(--azure-ink); }
+.phase-head h3 { font-size: 19px; }
+.tracks { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.track { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.track h4 { margin-bottom: 6px; }
+.track ul { font-size: 14.5px; color: var(--ink-2); display: grid; gap: 4px; }
+.track li + li { margin-top: 0; }
+.expect { font-size: 14.5px; color: var(--ink-2); background: var(--good-soft); border-radius: 10px; padding: 10px 12px; }
+.expect b { color: var(--ink); }
+
+.pill { display: inline-block; font: 600 11px/1 var(--mono); letter-spacing: 0.03em; padding: 5px 8px; border-radius: 999px; white-space: nowrap; }
+.pill.low { background: var(--good-soft); color: var(--good); }
+.pill.mid { background: var(--azure-soft); color: var(--azure-ink); }
+.pill.high { background: var(--stop-soft); color: var(--stop); }
+
+.answer { border-radius: 14px; padding: 18px 20px; display: grid; gap: 10px; background: var(--violet-soft); border: 1px solid color-mix(in srgb, var(--violet) 35%, transparent); }
+.answer .verdict-line { font: 750 20px/1.3 var(--display); font-stretch: 106%; color: var(--ink); }
+.answer p { color: var(--ink-2); }
+
+.script { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--violet); border-radius: 10px; padding: 14px 16px; font-size: 15px; color: var(--ink-2); display: grid; gap: 8px; }
+.script p b { color: var(--ink); }
+
+.slots { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.slot { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.slot .count { font: 780 30px/1 var(--display); font-stretch: 108%; color: var(--violet-ink); font-variant-numeric: tabular-nums; }
+.slot h3 { font-size: 17px; }
+.slot p, .slot li { font-size: 14.5px; color: var(--ink-2); }
+.slot dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: 14px; margin: 0; }
+.slot dt { font: 600 11px/1.6 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.slot dd { margin: 0; color: var(--ink-2); }
+
+.weekly { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); padding: clamp(18px, 3vw, 28px); display: grid; gap: 18px; }
+.weekly-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.progress { font: 600 14px var(--mono); color: var(--violet-ink); font-variant-numeric: tabular-nums; }
+.btn {
+  font: 600 14px var(--body); color: var(--ink); background: var(--surface-2); border: 1px solid var(--line-strong);
+  border-radius: 8px; padding: 8px 12px; cursor: pointer;
+}
+.btn:hover { border-color: var(--violet); }
+.task-group { display: grid; gap: 6px; }
+.task-group h3 { font-size: 16px; display: flex; justify-content: space-between; gap: 10px; }
+.task-group h3 span { font: 500 12.5px var(--mono); color: var(--muted); }
+.task { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; padding: 8px 10px; border-radius: 8px; font-size: 15px; color: var(--ink-2); cursor: pointer; }
+.task:hover { background: var(--surface-2); }
+.task input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--violet); cursor: pointer; }
+.task input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line-strong); }
+.task small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; text-decoration: none; }
+.cadence { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+</style>
+<style>
+/* ---------- Roadmap additions ---------- */
+:root { --seg1: #7b2ff7; --seg2: #5050f8; --seg3: #1e90ff; --seg4: #b9a3f5; --seg5: #b6b3c9; --segink: #17151f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --seg1: #7f3df5; --seg2: #5a5af0; --seg3: #3a9bff; --seg4: #4a3a7a; --seg5: #3a3d4c; --segink: #eceaf4; } }
+:root[data-theme="dark"] { --seg1: #7f3df5; --seg2: #5a5af0; --seg3: #3a9bff; --seg4: #4a3a7a; --seg5: #3a3d4c; --segink: #eceaf4; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.fchip { font: 600 12.5px/1 var(--mono); padding: 9px 12px; border-radius: 999px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-2); cursor: pointer; }
+.fchip:hover { border-color: var(--violet); }
+.fchip[aria-pressed="true"] { background: var(--violet); border-color: var(--violet); color: #fff; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; min-width: 0; }
+.pcard > header { display: grid; gap: 8px; padding: 18px 22px; border-bottom: 1px solid var(--line); }
+.pcard .ph-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.pcard .ph-top h3 { font-size: 23px; margin-right: auto; }
+.pcard .when { font: 600 12.5px/1.2 var(--mono); color: var(--violet-ink); }
+.pcard .goal { color: var(--ink-2); max-width: 70ch; }
+.pbody { padding: 18px 22px 22px; display: grid; gap: 22px; }
+.wsg { display: grid; gap: 2px; }
+.wsg h4 { padding-bottom: 4px; }
+.task b { color: var(--ink); font-weight: 650; }
+.task .tm { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 4px; font: 500 11.5px/1.4 var(--mono); color: var(--muted); text-decoration: none; }
+.task .tm i { font-style: normal; }
+.gate { border: 1px dashed var(--line-strong); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; background: var(--good-soft); }
+.gate ul { font-size: 14.5px; color: var(--ink-2); display: grid; gap: 4px; }
+.gate li + li { margin-top: 0; }
+.pprog { font: 600 13px var(--mono); color: var(--violet-ink); font-variant-numeric: tabular-nums; }
+.glance th:first-child, .glance td:first-child { position: sticky; left: 0; background: var(--surface); z-index: 1; min-width: 140px; font-weight: 650; color: var(--ink); }
+.glance th:first-child { background: var(--surface-2); }
+.glance td { font-size: 14px; color: var(--ink-2); min-width: 190px; }
+.glance table { min-width: 900px; }
+.sb { display: grid; gap: 10px; }
+.sb-row { display: grid; grid-template-columns: 1fr; gap: 6px; }
+@media (min-width: 760px) { .sb-row { grid-template-columns: 170px 1fr 120px; align-items: center; gap: 14px; } }
+.sb-label { font-weight: 650; font-size: 14.5px; }
+.sb-label small { display: block; font: 500 12px var(--mono); color: var(--muted); }
+.sb-track { position: relative; display: flex; height: 34px; border-radius: 8px; overflow: hidden; background: var(--surface-2); border: 1px solid var(--line); }
+.seg { display: grid; place-items: center; font: 600 12px var(--mono); color: #fff; min-width: 0; overflow: hidden; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.seg.s1 { background: var(--seg1); } .seg.s2 { background: var(--seg2); } .seg.s3 { background: var(--seg3); color: #08121f; }
+.seg.s4 { background: var(--seg4); color: var(--segink); } .seg.s5 { background: var(--seg5); color: var(--segink); }
+.sb-note { font: 600 12.5px var(--mono); font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.sb-note.over { color: var(--stop); }
+.cap-line { position: absolute; top: -2px; bottom: -2px; width: 0; border-left: 2px dashed var(--ink); z-index: 2; pointer-events: none; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 13.5px; color: var(--ink-2); }
+.legend span::before { content: ""; display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; background: var(--c); border: 1px solid var(--line-strong); }
+.rule { display: grid; gap: 4px; padding: 12px 14px; border: 1px solid var(--line); border-left: 3px solid var(--violet); border-radius: 10px; background: var(--surface); }
+.rule b.if, .rule b.then { font: 700 11px/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; margin-right: 8px; }
+.rule b.if { color: var(--azure-ink); } .rule b.then { color: var(--violet-ink); }
+.rules { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.verdict.never { background: var(--stop-soft); color: var(--stop); }
+.mono-s { font: 500 12.5px/1.4 var(--mono); color: var(--muted); }
+.cal td:first-child { white-space: nowrap; font-weight: 650; color: var(--ink); }
+.cal td { font-size: 14px; }
+.cal table { min-width: 860px; }
+</style>
+<style>
+/* ---------- Template additions: collapsibles and FAQ ---------- */
+.folds { display: grid; gap: 10px; }
+.fold { border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: hidden; }
+.fold > summary {
+  cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px 12px; flex-wrap: wrap;
+  padding: 16px 20px; font: 720 18px/1.3 var(--display); font-stretch: 106%; color: var(--ink);
+}
+.fold > summary::-webkit-details-marker { display: none; }
+.fold > summary::after { content: "+"; margin-left: auto; font: 600 20px/1 var(--mono); color: var(--violet-ink); }
+.fold[open] > summary::after { content: "–"; }
+.fold > summary:hover { background: var(--surface-2); }
+.fold[open] > summary { border-bottom: 1px solid var(--line); }
+.fold-body { padding: 18px 20px 22px; display: grid; gap: 16px; min-width: 0; }
+.fold-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+.faq-group { display: grid; gap: 0; }
+.faq-group > h3 { font-size: 17px; margin-bottom: 8px; }
+.faq details { border-bottom: 1px solid var(--line); }
+.faq-group details:first-of-type { border-top: 1px solid var(--line); }
+.faq summary {
+  cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding: 14px 4px; font: 650 16px/1.4 var(--body); color: var(--ink);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; font: 600 18px/1 var(--mono); color: var(--violet-ink); }
+.faq details[open] > summary::after { content: "–"; }
+.faq summary:hover { color: var(--violet-ink); }
+.faq .answer-body { padding: 0 4px 18px; display: grid; gap: 10px; max-width: 70ch; color: var(--ink-2); }
+/* ---------- Template additions: print ---------- */
+@media print {
+  body { padding-inline: 0; background: #fff; }
+  .toc, .chips, .btn, .fold-tools, input[type="range"] { display: none !important; }
+  .layout { grid-template-columns: 1fr; }
+  .bluf, .estimator, .weekly { box-shadow: none; }
+  section, .pcard, .service, .stage, .slot, .rule, .opt, .target { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<!--
+=====================================================================
+REPORT TEMPLATE
+=====================================================================
+HOW TO USE
+ 1. Save a copy of this file with the report's name (Report/<Name>.html in the project).
+ 2. Change <title>, the masthead (section 00) and the footer.
+ 3. Keep the sections you need. DELETE the others and their line in the
+    Contents list (<nav class="toc">). Every section is self-contained.
+ 4. Replace each [bracketed placeholder]. Sample numbers in charts and
+    calculators are marked "sample" and must be replaced.
+ 5. To repeat an element (another figure, row, card, phase, rule),
+    copy one of its blocks inside the same section.
+
+SECTION INDEX
+ 00 Masthead            13 Calendar table
+ 01 Bottom line         14 Verdict table (now / later / never)
+ 02 Narrative + notes   15 Stage cards with gates
+ 03 Status table        16 Slot cards (counts + facts)
+ 04 Target cards        17 Script, code and do / don't
+ 05 Architecture lanes  18 Mix chart (stacked bars)
+ 06 Service cards       19 Capacity chart (slider)
+ 07 Options + steps     20 Budget table
+ 08 Timeline            21 Scorecard tables
+ 09 Overview matrix     22 Calculator
+ 10 Phase cards         23 Decision rules + risks
+ 11 Recurring routine   24 Recommendation callout
+ 12 Ranked priorities   25 Document library
+                        26 Collapsible content
+                        27 FAQ
+                        28 Sources
+
+COLOURS: violet and azure only (see brand notes). Section ids are used by
+the Contents links, so keep each id and its link in step.
+=====================================================================
+-->
+<div class="shell">
+
+  <!-- ================= 00 MASTHEAD ================= -->
+  <header class="masthead">
+    <div class="brandline"><span class="brandmark">[Brand]<span>.</span></span><span>[Report type, e.g. Plan, Analysis, Roadmap]</span><span>[Month D, YYYY]</span></div>
+    <h1>[Report title in one line]</h1>
+    <p class="lede">[One or two sentences that say what this report covers and what the reader will be able to decide or do after reading it.]</p>
+    <div class="meta">
+      <span><b>Prepared for</b> [Name, role]</span>
+      <span><b>Scope</b> [Period, system or question covered]</span>
+      <span><b>Builds on</b> [Earlier reports or source documents]</span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Contents">
+      <details open id="toc">
+        <summary>Contents</summary>
+        <ol>
+          <li><a href="#bottom-line">Bottom line</a></li>
+          <li><a href="#narrative">Narrative and notes</a></li>
+          <li><a href="#status">Where things stand</a></li>
+          <li><a href="#targets">Target cards</a></li>
+          <li><a href="#architecture">Architecture lanes</a></li>
+          <li><a href="#services">Service cards</a></li>
+          <li><a href="#options">Options and steps</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#overview">Overview matrix</a></li>
+          <li><a href="#plan">Phase cards</a></li>
+          <li><a href="#routine">Recurring routine</a></li>
+          <li><a href="#priorities">Ranked priorities</a></li>
+          <li><a href="#calendar">Calendar</a></li>
+          <li><a href="#verdicts">Now, later, never</a></li>
+          <li><a href="#stages">Stages with gates</a></li>
+          <li><a href="#slots">Slot cards</a></li>
+          <li><a href="#script">Script and code</a></li>
+          <li><a href="#mix">Mix chart</a></li>
+          <li><a href="#capacity">Capacity chart</a></li>
+          <li><a href="#budget">Budget</a></li>
+          <li><a href="#scorecard">Scorecard</a></li>
+          <li><a href="#calculator">Calculator</a></li>
+          <li><a href="#rules">Decision rules and risks</a></li>
+          <li><a href="#recommendation">Recommendation</a></li>
+          <li><a href="#library">Document library</a></li>
+          <li><a href="#details">Collapsible content</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </details>
+    </nav>
+
+    <main>
+
+      <!-- ================= 01 BOTTOM LINE ================= -->
+      <!-- Always first. Four figures, up to five numbered actions, decisions the reader owns. -->
+      <section id="bottom-line" aria-labelledby="h-bluf">
+        <header><p class="kicker">Bottom line</p><h2 id="h-bluf">[The answer, stated as a conclusion in one sentence]</h2></header>
+        <div class="bluf">
+          <div class="figures">
+            <div class="figure accent"><span class="num">00<small> unit</small></span><span class="lbl">[What this number is and why it matters most. The accent figure is the headline.]</span></div>
+            <div class="figure"><span class="num">00<small> unit</small></span><span class="lbl">[Second figure and what it means.]</span></div>
+            <div class="figure"><span class="num">00<small> unit</small></span><span class="lbl">[Third figure and what it means.]</span></div>
+            <div class="figure"><span class="num">$0,000</span><span class="lbl">[Fourth figure, for example cost or revenue, and what it covers.]</span></div>
+          </div>
+          <div class="two-col">
+            <div class="prose">
+              <h3>[Do this first, e.g. This week]</h3>
+              <ol class="recs">
+                <li><span><strong>[Action in four to six words.]</strong> [One sentence on how and why.]</span></li>
+                <li><span><strong>[Action.]</strong> [How and why.]</span></li>
+                <li><span><strong>[Action.]</strong> [How and why.]</span></li>
+              </ol>
+              <div class="note"><b>[Timing or context note.]</b> [Something the reader should know before acting.]</div>
+            </div>
+            <div class="prose">
+              <h3>What this report adds</h3>
+              <ul>
+                <li><strong>[Contribution one]</strong> [what it gives the reader].</li>
+                <li><strong>[Contribution two]</strong> [what it gives the reader].</li>
+                <li><strong>[Contribution three]</strong> [what it gives the reader].</li>
+              </ul>
+            </div>
+          </div>
+          <div class="decide">
+            <h4>Decisions only you can make</h4>
+            <ul>
+              <li>[Decision one, with the options and which one is recommended.]</li>
+              <li>[Decision two.]</li>
+              <li>[Decision three, linking to the section that explains it: <a href="#rules">decision rules</a>.]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 02 NARRATIVE + NOTES ================= -->
+      <!-- Plain explanation. Use for context, method, or background. Three note styles are shown. -->
+      <section id="narrative" aria-labelledby="h-narr">
+        <header><p class="kicker">Context</p><h2 id="h-narr">[Section heading]</h2></header>
+        <div class="prose">
+          <p>[Opening paragraph. Lead with the point, then the evidence. Keep paragraphs to three or four sentences. Use <strong>bold</strong> for the one phrase a skimming reader must catch and <code>code style</code> for file names, commands and field names.]</p>
+          <p>[Second paragraph.]</p>
+        </div>
+        <div class="two-col">
+          <div class="prose"><h3>[Left column heading]</h3>
+            <ul>
+              <li><strong>[Lead-in]:</strong> [point].</li>
+              <li><strong>[Lead-in]:</strong> [point].</li>
+              <li><strong>[Lead-in]:</strong> [point].</li>
+            </ul></div>
+          <div class="prose"><h3>[Right column heading]</h3>
+            <ul>
+              <li>[Point.]</li>
+              <li>[Point.]</li>
+              <li>[Point.]</li>
+            </ul></div>
+        </div>
+        <div class="note"><b>Information note (blue).</b> [Context, a caveat, or an assumption the reader should know.]</div>
+        <div class="note good"><b>Good news or confirmation (green).</b> [Something that is already working, or a safe default.]</div>
+        <div class="note stop"><b>Warning or stop condition (red).</b> [A risk, a rule that must not be broken, or a blocker.]</div>
+      </section>
+
+      <!-- ================= 03 STATUS TABLE ================= -->
+      <!-- Pills: low = green, mid = blue, high = red. Rename the words to fit (Strong, Open, Blocker). -->
+      <section id="status" aria-labelledby="h-status">
+        <header><p class="kicker">Starting point</p><h2 id="h-status">Where things stand today</h2></header>
+        <div class="prose"><p>[How the audit was done, what was read or tested, and the headline finding.]</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Area</th><th>Status</th><th>What was found</th></tr></thead>
+            <tbody>
+              <tr><td>[Area one]</td><td><span class="pill high">Blocker</span></td><td>[Finding with the specific evidence: a number, a file, a page.]</td></tr>
+              <tr><td>[Area two]</td><td><span class="pill mid">Decide now</span></td><td>[Finding.]</td></tr>
+              <tr><td>[Area three]</td><td><span class="pill low">Strong</span></td><td>[Finding.]</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 04 TARGET CARDS ================= -->
+      <!-- Describe the things being built, hosted, or addressed. Cards wrap to fit the width. -->
+      <section id="targets" aria-labelledby="h-targets">
+        <header><p class="kicker">Scope</p><h2 id="h-targets">What we're covering</h2></header>
+        <div class="prose"><p>[One paragraph on how many things are in scope and how they were chosen.]</p></div>
+        <div class="targets">
+          <article class="target">
+            <p class="where">[domain, system or owner]</p>
+            <h3>[Item one]</h3>
+            <p>[What it is in one or two sentences.]</p>
+            <ul><li>[Key fact → what happens]</li><li>[Key fact → what happens]</li><li>[Key fact → what happens]</li></ul>
+          </article>
+          <article class="target">
+            <p class="where">[domain, system or owner]</p>
+            <h3>[Item two]</h3>
+            <p>[What it is.]</p>
+            <ul><li>[Key fact]</li><li>[Key fact]</li></ul>
+          </article>
+          <article class="target">
+            <p class="where">[domain, system or owner]</p>
+            <h3>[Item three]</h3>
+            <p>[What it is.]</p>
+            <ul><li>[Key fact]</li><li>[Key fact]</li></ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= 05 ARCHITECTURE ================= -->
+      <!-- Lanes read top to bottom. Node colours: plain = neutral, .v = violet (we run it), .a = azure (we rent it). -->
+      <section id="architecture" aria-labelledby="h-arch">
+        <header><p class="kicker">Architecture</p><h2 id="h-arch">How it fits together</h2></header>
+        <div class="prose"><p>[How to read the diagram, and what the colours mean. Violet marks what we run; blue marks what we rent.]</p></div>
+        <div class="arch" role="figure" aria-label="[Describe the diagram in one sentence]">
+          <div class="lane">
+            <div class="lane-name">[Lane label]<b>[Lane title]</b></div>
+            <div class="nodes">
+              <div class="node">[Node]<small>[detail]</small></div>
+              <div class="node">[Node]<small>[detail]</small></div>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-name">[Lane label]<b>[Lane title]</b></div>
+            <div class="nodes">
+              <div class="node a">[Rented service]<small>[detail]</small></div>
+              <div class="node a">[Rented service]<small>[detail]</small></div>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-name">[Lane label]<b>[Lane title]</b></div>
+            <div class="nodes">
+              <div class="group">
+                <span class="group-label">[Group label, e.g. static hosting]</span>
+                <div class="nodes">
+                  <div class="node a">[Node]<small>[detail]</small></div>
+                  <div class="node a">[Node]<small>[detail]</small></div>
+                </div>
+              </div>
+              <div class="group">
+                <span class="group-label">[Group label, e.g. server]</span>
+                <div class="nodes">
+                  <div class="node v">[Node we run]<small>[detail]</small></div>
+                  <div class="node v">[Node we run]<small>[detail]</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flows">
+          <p class="flow"><b>[A flow, in plain words]</b>[Step by step: who does what, in order, ending with the result.]</p>
+          <p class="flow v"><b>[A second flow]</b>[Steps.]</p>
+          <p class="flow i"><b>[A third flow]</b>[Steps.]</p>
+        </div>
+      </section>
+
+      <!-- ================= 06 SERVICE CARDS ================= -->
+      <!-- One card per tool, vendor or component: four facets, an optional note, then ordered setup steps. -->
+      <section id="services" aria-labelledby="h-svc">
+        <header><p class="kicker">The stack</p><h2 id="h-svc">[Thing], one by one</h2></header>
+        <div class="prose"><p>[What every card answers, in the same order. Chip colours: blue = already used, violet = cost.]</p></div>
+        <div class="stack-list">
+          <article class="service" id="svc-one">
+            <header><h3>[Name]</h3><span class="chip pref">[Preference tag]</span><span class="chip">[Category]</span><span class="chip cost">[$0 at launch]</span></header>
+            <div class="svc-body">
+              <div class="facets">
+                <div class="facet"><h4>What it is</h4><p>[Plain description in one to three sentences.]</p></div>
+                <div class="facet"><h4>Why we use it</h4><ul><li>[Reason.]</li><li>[Reason.]</li><li>[Reason.]</li></ul></div>
+                <div class="facet"><h4>How it works for us</h4><ul><li><strong>[Where]:</strong> [how it is configured.]</li><li><strong>[Where]:</strong> [how.]</li></ul></div>
+                <div class="facet"><h4>What it costs</h4><ul><li>[Free tier or base price.]</li><li>[Paid tier and when it matters.]</li></ul></div>
+              </div>
+              <div class="note"><b>[Why this choice.]</b> [A decision, trade-off or gotcha the reader should not miss.]</div>
+              <div class="setup">
+                <h4>Set it up</h4>
+                <ol>
+                  <li>[First step, with the exact setting or command.]</li>
+                  <li>[Second step.]</li>
+                  <li>[Third step. <strong>Bold the step that must not be skipped.</strong>]</li>
+                </ol>
+              </div>
+            </div>
+          </article>
+          <!-- Copy the whole <article class="service"> block for the next one. -->
+        </div>
+      </section>
+
+      <!-- ================= 07 OPTIONS + STEPS ================= -->
+      <!-- Compare two or three options (mark the recommendation with .pick and a tag), then a numbered walk-through. -->
+      <section id="options" aria-labelledby="h-opt">
+        <header><p class="kicker">Decision</p><h2 id="h-opt">[Question the options answer]</h2></header>
+        <div class="compare">
+          <div class="opt pick">
+            <h4><span class="tag">Pick</span> [Recommended option]</h4>
+            <p>[One sentence on what it is.]</p>
+            <ul><li>[Why it wins.]</li><li>[Why it wins.]</li></ul>
+          </div>
+          <div class="opt">
+            <h4>[Alternative]</h4>
+            <p>[What it is.]</p>
+            <ul><li>[When it makes sense.]</li><li>[Its downside.]</li></ul>
+          </div>
+          <div class="opt">
+            <h4>[Alternative]</h4>
+            <p>[What it is.]</p>
+            <ul><li>[When it makes sense.]</li></ul>
+          </div>
+        </div>
+        <h3>[How the chosen option works, step by step]</h3>
+        <ol class="steps">
+          <li><span><b>[Step one, with the trigger or time.]</b> [What happens.]</span></li>
+          <li><span><b>[Step two.]</b> [What happens.]</span></li>
+          <li><span><b>[Step three.]</b> [What happens.]</span></li>
+        </ol>
+      </section>
+
+      <!-- ================= 08 TIMELINE ================= -->
+      <!-- Parallel tracks per phase, each ending in a green "by then" outcome. Add class "later" to a phase for azure. -->
+      <section id="timeline" aria-labelledby="h-time">
+        <header><p class="kicker">Timeline</p><h2 id="h-time">The [N]-month timeline</h2></header>
+        <div class="prose"><p>[How many tracks run in parallel, and what the green line in each phase means.]</p></div>
+        <div class="timeline">
+          <div class="phase">
+            <div class="phase-head"><span class="when">[Weeks 1–2]</span><h3>[Phase title]</h3></div>
+            <div class="tracks">
+              <div class="track"><h4>[Track one]</h4><ul><li>[Task.]</li><li>[Task.]</li></ul></div>
+              <div class="track"><h4>[Track two]</h4><ul><li>[Task.]</li><li>[Task.]</li></ul></div>
+              <div class="track"><h4>[Track three]</h4><ul><li>[Task.]</li></ul></div>
+            </div>
+            <p class="expect"><b>By week 2:</b> [What should be true when this phase ends.]</p>
+          </div>
+          <div class="phase">
+            <div class="phase-head"><span class="when">[Weeks 3–8]</span><h3>[Phase title]</h3></div>
+            <div class="tracks">
+              <div class="track"><h4>[Track one]</h4><ul><li>[Task.]</li></ul></div>
+              <div class="track"><h4>[Track two]</h4><ul><li>[Task.]</li></ul></div>
+            </div>
+            <p class="expect"><b>By week 8:</b> [Outcome.]</p>
+          </div>
+          <div class="phase later">
+            <div class="phase-head"><span class="when">[Months 3–12]</span><h3>[Later phase, azure marker]</h3></div>
+            <div class="tracks">
+              <div class="track"><h4>[Track one]</h4><ul><li>[Task.]</li></ul></div>
+            </div>
+            <p class="expect"><b>By month 12:</b> [Outcome.]</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 09 OVERVIEW MATRIX ================= -->
+      <!-- Workstreams down the side, phases across the top. First column stays put while scrolling sideways. -->
+      <section id="overview" aria-labelledby="h-over">
+        <header><p class="kicker">Overview</p><h2 id="h-over">Plan at a glance</h2></header>
+        <div class="prose"><p>[How many workstreams and phases, and what ends each phase. Scroll sideways on a phone.]</p></div>
+        <div class="table-wrap glance">
+          <table>
+            <thead><tr>
+              <th>Workstream</th>
+              <th>[Phase 1 dates]<br><span style="text-transform:none;letter-spacing:0;font-weight:500">[Phase 1 name]</span></th>
+              <th>[Phase 2 dates]<br><span style="text-transform:none;letter-spacing:0;font-weight:500">[Phase 2 name]</span></th>
+              <th>[Phase 3 dates]<br><span style="text-transform:none;letter-spacing:0;font-weight:500">[Phase 3 name]</span></th>
+            </tr></thead>
+            <tbody>
+              <tr><td>[Workstream A]</td><td>[Items, comma separated]</td><td>[Items]</td><td>[Items]</td></tr>
+              <tr><td>[Workstream B]</td><td>[Items]</td><td>[Items]</td><td>[Items]</td></tr>
+              <tr><td>[Workstream C]</td><td>[Items]</td><td>[Items]</td><td>[Items]</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note good"><b>[Beyond the horizon.]</b> [What comes after the last phase.]</div>
+      </section>
+
+      <!-- ================= 10 PHASE CARDS ================= -->
+      <!-- Tickable tasks by workstream, a gate per phase, workstream filter. Ticks save in the reader's browser
+           (keyed by task title, so keep titles unique). Progress counts update on their own.
+           Filter chip data-f must match the wsg data-ws value. -->
+      <section id="plan" aria-labelledby="h-plan">
+        <header><p class="kicker">The plan</p><h2 id="h-plan">[Plan name], phase by phase</h2></header>
+        <div class="prose"><p>[How many items there are, how ticking works, and what "Needs" means. Tick items as you finish them; ticks are saved in this browser.]</p></div>
+        <div class="chips" id="filters" role="group" aria-label="Filter by workstream">
+          <button type="button" class="fchip" data-f="all" aria-pressed="true">All workstreams</button>
+          <button type="button" class="fchip" data-f="a" aria-pressed="false">[Workstream A]</button>
+          <button type="button" class="fchip" data-f="b" aria-pressed="false">[Workstream B]</button>
+        </div>
+        <div class="stack-list" id="phases">
+          <article class="pcard" id="p1">
+            <header>
+              <div class="ph-top"><span class="when">[Month YYYY · N weeks]</span><h3>Phase 1: [Name]</h3><span class="pprog" data-prog>0 of 0 done</span></div>
+              <p class="goal">[The goal of this phase in one sentence.]</p>
+              <div class="ph-top"><span class="chip">[00 h of one-time work]</span><span class="chip">[00 h/week routine]</span></div>
+            </header>
+            <div class="pbody">
+              <div class="wsg" data-ws="a"><h4>[Workstream A]</h4>
+                <label class="task"><input type="checkbox"><span><b>[Task title]</b> [What to do and why, in one or two sentences.]<span class="tm"><i>≈ 0 h</i><i>$0</i><i>needs [other task]</i></span></span></label>
+                <label class="task"><input type="checkbox"><span><b>[Second task title]</b> [Detail.]<span class="tm"><i>≈ 0 h</i></span></span></label>
+              </div>
+              <div class="wsg" data-ws="b"><h4>[Workstream B]</h4>
+                <label class="task"><input type="checkbox"><span><b>[Third task title]</b> [Detail.]<span class="tm"><i>weekly routine</i></span></span></label>
+              </div>
+              <div class="gate"><h4>Move on when</h4><ul><li>[Evidence that proves this phase is done.]</li><li>[Evidence.]</li></ul></div>
+            </div>
+          </article>
+          <article class="pcard" id="p2">
+            <header>
+              <div class="ph-top"><span class="when">[Month YYYY · N weeks]</span><h3>Phase 2: [Name]</h3><span class="pprog" data-prog>0 of 0 done</span></div>
+              <p class="goal">[Goal.]</p>
+              <div class="ph-top"><span class="chip">[00 h of one-time work]</span></div>
+            </header>
+            <div class="pbody">
+              <div class="wsg" data-ws="a"><h4>[Workstream A]</h4>
+                <label class="task"><input type="checkbox"><span><b>[Fourth task title]</b> [Detail.]<span class="tm"><i>≈ 0 h</i></span></span></label>
+              </div>
+              <div class="gate"><h4>Move on when</h4><ul><li>[Evidence.]</li></ul></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= 11 RECURRING ROUTINE ================= -->
+      <!-- Weekly cadence cards plus a checklist that resets every week (Start a new week). -->
+      <section id="routine" aria-labelledby="h-rout">
+        <header><p class="kicker">Maintenance</p><h2 id="h-rout">The weekly routine</h2></header>
+        <div class="prose"><p>[About how many hours it takes, and what it protects. Ticks are saved for the current week; "Start a new week" clears them.]</p></div>
+        <div class="weekly" id="weekly">
+          <div class="weekly-top">
+            <span class="progress" id="week-progress" aria-live="polite">0 of 0 done</span>
+            <span class="dim" id="week-label" style="font-size:14px"></span>
+            <button class="btn" type="button" id="reset-week">Start a new week</button>
+          </div>
+          <div class="two-col">
+            <div class="task-group">
+              <h3>[Group one] <span>≈ 30 min · Monday</span></h3>
+              <label class="task"><input type="checkbox"><span>[Recurring task.]<small>[Why or how.]</small></span></label>
+              <label class="task"><input type="checkbox"><span>[Recurring task.]</span></label>
+            </div>
+            <div class="task-group">
+              <h3>[Group two] <span>≈ 3 h · Friday</span></h3>
+              <label class="task"><input type="checkbox"><span>[Recurring task.]</span></label>
+              <label class="task"><input type="checkbox"><span>[Recurring task.]</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="cadence">
+          <div class="stage"><p class="when">Monday · 30 min</p><h3>[Rhythm name]</h3><ul><li>[What you do.]</li><li>[What you do.]</li></ul></div>
+          <div class="stage"><p class="when">Tue–Thu · 10 h</p><h3>[Rhythm name]</h3><ul><li>[What you do.]</li></ul></div>
+          <div class="stage"><p class="when">Friday · 3 h</p><h3>[Rhythm name]</h3><ul><li>[What you do.]</li></ul></div>
+        </div>
+      </section>
+
+      <!-- ================= 12 RANKED PRIORITIES ================= -->
+      <!-- Effort pills: low = quick, mid = moderate, high = heavy. -->
+      <section id="priorities" aria-labelledby="h-prio">
+        <header><p class="kicker">Focus</p><h2 id="h-prio">If you only do [N] things</h2></header>
+        <div class="prose"><p>[How the list is ranked, and which items are prerequisites.]</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>Do this</th><th>Why it ranks here</th><th>Effort</th><th>Cost</th></tr></thead>
+            <tbody>
+              <tr><td class="n">1</td><td>[Action]</td><td>[Reason.]</td><td><span class="pill mid">00 h</span></td><td class="n">$0</td></tr>
+              <tr><td class="n">2</td><td>[Action]</td><td>[Reason.]</td><td><span class="pill low">00 h</span></td><td class="n">$0</td></tr>
+              <tr><td class="n">3</td><td>[Action]</td><td>[Reason.]</td><td><span class="pill high">00 h</span></td><td class="n">$0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 13 CALENDAR ================= -->
+      <section id="calendar" aria-labelledby="h-cal">
+        <header><p class="kicker">Calendar</p><h2 id="h-cal">[What the calendar schedules]</h2></header>
+        <div class="prose"><p>[How the calendar is organised and what the numbered items refer to.]</p></div>
+        <div class="table-wrap cal">
+          <table>
+            <thead><tr><th>Month</th><th>[Context column]</th><th>[What ships]</th><th>[Second track]</th><th>[Third track]</th></tr></thead>
+            <tbody>
+              <tr><td>[Mon YYYY]</td><td>[What is happening this month]</td><td>[Item one · Item two]</td><td>[Item]</td><td>[Item]</td></tr>
+              <tr><td>[Mon YYYY]</td><td>[Context]</td><td>[Items]</td><td>[Item]</td><td>[Item]</td></tr>
+              <tr><td>[Mon YYYY]</td><td>[Context]</td><td>[Items]</td><td>[Item]</td><td>[Item]</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note"><b>[Rules for every item.]</b> [Standards that apply to everything on the calendar.]</div>
+      </section>
+
+      <!-- ================= 14 VERDICT TABLE ================= -->
+      <!-- Verdict chips: now (green), later (blue), opt (grey), never (red). Reword the chip text freely. -->
+      <section id="verdicts" aria-labelledby="h-verd">
+        <header><p class="kicker">Channels</p><h2 id="h-verd">[Options]: now, later, never</h2></header>
+        <div class="prose"><p>[What is being judged, and that every "later" carries a trigger.]</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>[Option]</th><th>Verdict</th><th>Why, and the trigger</th></tr></thead>
+            <tbody>
+              <tr><td>[Option one]</td><td><span class="verdict now">Now</span></td><td>[Reason.]</td></tr>
+              <tr><td>[Option two]</td><td><span class="verdict later">Month 3</span></td><td>[Reason and the trigger that starts it.]</td></tr>
+              <tr><td>[Option three]</td><td><span class="verdict opt">Optional</span></td><td>[Reason.]</td></tr>
+              <tr><td>[Option four]</td><td><span class="verdict never">Never</span></td><td>[Reason, ideally a rule or a law.]</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 15 STAGE CARDS ================= -->
+      <section id="stages" aria-labelledby="h-stg">
+        <header><p class="kicker">Sequence</p><h2 id="h-stg">[Sequence name]</h2></header>
+        <div class="prose"><p>[What the stages are and what a gate means.]</p></div>
+        <div class="stages">
+          <div class="stage"><p class="when">[Oct–Nov · before launch]</p><h3>[Stage title]</h3><ul><li>[What happens.]</li><li>[What happens.]</li></ul><div class="trig"><b>Gate:</b> [What must be true to move on.]</div></div>
+          <div class="stage"><p class="when">[Dec–Jan · launch]</p><h3>[Stage title]</h3><ul><li>[What happens.]</li></ul><div class="trig"><b>Gate:</b> [Condition.]</div></div>
+          <div class="stage"><p class="when">[Feb–Mar · growth]</p><h3>[Stage title]</h3><ul><li>[What happens.]</li></ul><div class="trig"><b>Gate:</b> [Condition.]</div></div>
+        </div>
+      </section>
+
+      <!-- ================= 16 SLOT CARDS ================= -->
+      <!-- A big count plus find / approach / lead-with facts. Good for segments, personas, or quotas. -->
+      <section id="slots" aria-labelledby="h-slot">
+        <header><p class="kicker">Segments</p><h2 id="h-slot">[The first N, by type]</h2></header>
+        <div class="prose"><p>[How the counts add up and how the mix was chosen.]</p></div>
+        <div class="slots">
+          <div class="slot"><span class="count">6</span><h3>[Segment one]</h3><p>[Why this segment.]</p><dl><dt>Find</dt><dd>[Where to find them]</dd><dt>Approach</dt><dd>[When and how]</dd><dt>Lead with</dt><dd>[The offer]</dd></dl></div>
+          <div class="slot"><span class="count">5</span><h3>[Segment two]</h3><p>[Why this segment.]</p><dl><dt>Find</dt><dd>[Where]</dd><dt>Approach</dt><dd>[When]</dd><dt>Lead with</dt><dd>[Offer]</dd></dl></div>
+          <div class="slot"><span class="count">3</span><h3>[Segment three]</h3><p>[Why this segment.]</p><dl><dt>Find</dt><dd>[Where]</dd><dt>Approach</dt><dd>[When]</dd><dt>Lead with</dt><dd>[Offer]</dd></dl></div>
+        </div>
+      </section>
+
+      <!-- ================= 17 SCRIPT, CODE, DO / DON'T ================= -->
+      <section id="script" aria-labelledby="h-script">
+        <header><p class="kicker">Playbook</p><h2 id="h-script">[Script or procedure name]</h2></header>
+        <div class="two-col">
+          <div class="prose">
+            <h3>[What to say or do]</h3>
+            <div class="script">
+              <p><b>You:</b> "[Opening line.]"</p>
+              <p><b>Them:</b> [Expected response and your next move.]</p>
+            </div>
+            <h3>Do</h3>
+            <ul><li>[Rule to follow.]</li><li>[Rule to follow.]</li></ul>
+          </div>
+          <div class="prose">
+            <h3>Example output or command</h3>
+<pre aria-label="Example"><code>[command or response, shown exactly as it appears]
+{
+  "field": "value"
+}</code></pre>
+            <h3>Do not</h3>
+            <ul><li>[Thing to avoid, and why.]</li><li>[Thing to avoid.]</li></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 18 MIX CHART ================= -->
+      <!-- Stacked bars that total 100. Set each segment's data-v to its percentage; width and label follow.
+           Segment colours s1–s5 match the legend --c variables. SAMPLE DATA: replace. -->
+      <section id="mix" aria-labelledby="h-mix">
+        <header><p class="kicker">Mix</p><h2 id="h-mix">[What the chart shows]</h2></header>
+        <div class="prose"><p>[What the bars compare, and what shifts from one row to the next.]</p></div>
+        <div class="sb" id="mix-chart" role="img" aria-label="[Describe the chart in a sentence for screen readers]">
+          <div class="sb-row" style="grid-template-columns:110px 1fr"><div class="sb-label">[Row 1]</div><div class="sb-track"><div class="seg s1" data-v="50"></div><div class="seg s2" data-v="25"></div><div class="seg s3" data-v="25"></div></div></div>
+          <div class="sb-row" style="grid-template-columns:110px 1fr"><div class="sb-label">[Row 2]</div><div class="sb-track"><div class="seg s1" data-v="30"></div><div class="seg s2" data-v="30"></div><div class="seg s3" data-v="20"></div><div class="seg s4" data-v="20"></div></div></div>
+          <div class="sb-row" style="grid-template-columns:110px 1fr"><div class="sb-label">[Row 3]</div><div class="sb-track"><div class="seg s1" data-v="20"></div><div class="seg s2" data-v="30"></div><div class="seg s4" data-v="40"></div><div class="seg s5" data-v="10"></div></div></div>
+        </div>
+        <div class="legend"><span style="--c:var(--seg1)">[Series 1]</span><span style="--c:var(--seg2)">[Series 2]</span><span style="--c:var(--seg3)">[Series 3]</span><span style="--c:var(--seg4)">[Series 4]</span><span style="--c:var(--seg5)">[Series 5]</span></div>
+        <div class="note"><b>A planning assumption, not a forecast.</b> [Where the numbers come from and when to replace them.]</div>
+      </section>
+
+      <!-- ================= 19 CAPACITY CHART ================= -->
+      <!-- Hours (or any unit) per row, against a limit the reader moves with the slider.
+           Set each segment's data-h; totals, bar widths and the "spare / over" note are calculated.
+           Slider max is the chart's full width. SAMPLE DATA: replace. -->
+      <section id="capacity" aria-labelledby="h-cap">
+        <header><p class="kicker">Reality check</p><h2 id="h-cap">[Capacity or load]</h2></header>
+        <div class="prose"><p>[What each bar adds up, where the figures come from, and what the dashed line is.]</p></div>
+        <div class="weekly">
+          <div class="control" style="max-width:420px"><label for="cap-hours">[Hours available in a week] <output id="cap-out">45</output></label><input type="range" id="cap-hours" min="30" max="60" step="1" value="45"></div>
+          <div class="sb" id="cap-chart" role="img" aria-label="[Describe the chart: rows, totals and the limit]">
+            <div class="sb-row"><div class="sb-label">[Phase one]<small>[dates]</small></div><div class="sb-track"><div class="seg s1" data-h="12"></div><div class="seg s2" data-h="21"></div><div class="seg s3" data-h="8"></div><span class="cap-line"></span></div><div class="sb-note"></div></div>
+            <div class="sb-row"><div class="sb-label">[Phase two]<small>[dates]</small></div><div class="sb-track"><div class="seg s1" data-h="15"></div><div class="seg s2" data-h="10"></div><div class="seg s3" data-h="10"></div><span class="cap-line"></span></div><div class="sb-note"></div></div>
+            <div class="sb-row"><div class="sb-label">[Phase three]<small>[dates]</small></div><div class="sb-track"><div class="seg s1" data-h="16"></div><div class="seg s2" data-h="8"></div><div class="seg s3" data-h="23"></div><span class="cap-line"></span></div><div class="sb-note"></div></div>
+          </div>
+          <div class="legend"><span style="--c:var(--seg1)">[Recurring work]</span><span style="--c:var(--seg2)">[One-time work, averaged]</span><span style="--c:var(--seg3)">[Delivery work]</span></div>
+          <p class="est-foot">Dashed line: what is available. Planning estimates; replace them with your timesheet after two months.</p>
+        </div>
+        <div class="two-col">
+          <div class="prose"><h3>What gives first</h3><ul><li><strong>[Item]</strong> [what to cut or hand off, and when].</li><li><strong>[Item]</strong> [what to cut].</li></ul></div>
+          <div class="prose"><h3>What never gives</h3><ul><li>[Non-negotiable.]</li><li>[Non-negotiable.]</li></ul></div>
+        </div>
+      </section>
+
+      <!-- ================= 20 BUDGET ================= -->
+      <!-- Right-aligned numbers use class "n". The total row uses class "total". -->
+      <section id="budget" aria-labelledby="h-bud">
+        <header><p class="kicker">Money</p><h2 id="h-bud">Budget</h2></header>
+        <div class="prose"><p>[What is free, where cash goes, which prices were checked and on what date.]</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Phase and items</th><th class="n">Cash</th></tr></thead>
+            <tbody>
+              <tr><td>[Phase one]<span class="sub">[Item $00; Item $00; Item $00]</span></td><td class="n">$000–$000</td></tr>
+              <tr><td>[Phase two]<span class="sub">[Items and amounts]</span></td><td class="n">≈ $000</td></tr>
+              <tr><td>[Phase three]<span class="sub">[Items and amounts]</span></td><td class="n">$0–$000</td></tr>
+              <tr class="total"><td>[Total, and what it excludes]<span class="sub">[What the total covers and what is optional.]</span></td><td class="n">≈ $0,000–$0,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note"><b>[Spending rule.]</b> [The stop rule or threshold that governs the money.]</div>
+      </section>
+
+      <!-- ================= 21 SCORECARD ================= -->
+      <section id="scorecard" aria-labelledby="h-score">
+        <header><p class="kicker">Measurement</p><h2 id="h-score">Scorecard</h2></header>
+        <div class="prose"><p>[Targets for the effort, not predictions. What to do when a number lags.]</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Measure</th><th>Where</th><th>[Checkpoint 1]</th><th>[Checkpoint 2]</th><th>[Checkpoint 3]</th></tr></thead>
+            <tbody>
+              <tr><td>[Measure]</td><td>[Source]</td><td class="n">0</td><td class="n">0</td><td class="n">0</td></tr>
+              <tr><td>[Measure]</td><td>[Source]</td><td class="n">0%</td><td class="n">0%</td><td class="n">0%</td></tr>
+              <tr><td>[Measure]</td><td>[Source]</td><td class="n">Baseline</td><td class="n">2× baseline</td><td class="n">4× baseline</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Weekly leading signal</th><th>Why it matters</th><th>Target</th></tr></thead>
+            <tbody>
+              <tr><td>[Signal]</td><td>[Why it predicts the result.]</td><td class="n">100%</td></tr>
+              <tr><td>[Signal]</td><td>[Why.]</td><td class="n">≥ 00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 22 CALCULATOR ================= -->
+      <!-- Works backwards from a monthly goal through four conversion rates to the activity needed.
+           Change the labels, ranges and the data-cap number (what the plan already carries per week). SAMPLE rates. -->
+      <section id="calculator" aria-labelledby="h-calc">
+        <header><p class="kicker">Calculator</p><h2 id="h-calc">[Question the calculator answers]</h2></header>
+        <div class="estimator" id="calc">
+          <div>
+            <h3>[How much activity does the goal take?]</h3>
+            <p class="est-foot" style="margin-top:6px">[The rates are placeholders. Replace them with your own after N logged cases.]</p>
+          </div>
+          <div class="est-grid">
+            <div class="controls">
+              <div class="control"><label for="c-goal">[Goal per month] <output id="c-goal-o">2</output></label><input type="range" id="c-goal" min="1" max="6" step="0.5" value="2"></div>
+              <div class="control"><label for="c-r1">[Step 1 becomes step 2] <output id="c-r1-o">15%</output></label><input type="range" id="c-r1" min="5" max="40" step="1" value="15"></div>
+              <div class="control"><label for="c-r2">[Step 2 becomes step 3] <output id="c-r2-o">40%</output></label><input type="range" id="c-r2" min="10" max="80" step="1" value="40"></div>
+              <div class="control"><label for="c-r3">[Step 3 becomes step 4] <output id="c-r3-o">60%</output></label><input type="range" id="c-r3" min="20" max="100" step="1" value="60"></div>
+              <div class="control"><label for="c-r4">[Step 4 becomes the goal] <output id="c-r4-o">40%</output></label><input type="range" id="c-r4" min="10" max="80" step="1" value="40"></div>
+            </div>
+            <div class="results" aria-live="polite">
+              <div class="res-row"><span>[Step 4 per month]</span><b id="c-s4">0</b></div>
+              <div class="res-row"><span>[Step 3 per month]</span><b id="c-s3">0</b></div>
+              <div class="res-row"><span>[Step 2 per month]</span><b id="c-s2">0</b></div>
+              <div class="res-row"><span>[Step 1 per month]</span><b id="c-s1">0</b></div>
+              <div class="res-total"><span>[Step 1 per week]</span><b id="c-wk">0</b></div>
+              <p class="est-foot" id="calc-verdict" data-cap="27">[The plan already carries about 27 a week.]</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 23 RULES + RISKS ================= -->
+      <section id="rules" aria-labelledby="h-rules">
+        <header><p class="kicker">Judgment</p><h2 id="h-rules">Decision rules and risks</h2></header>
+        <div class="prose"><p>When a number moves, check this list before changing anything.</p></div>
+        <div class="rules">
+          <div class="rule"><p><b class="if">If</b>[Condition.]</p><p><b class="then">Then</b>[Action.]</p></div>
+          <div class="rule"><p><b class="if">If</b>[Condition.]</p><p><b class="then">Then</b>[Action.]</p></div>
+          <div class="rule"><p><b class="if">If</b>[Condition.]</p><p><b class="then">Then</b>[Action.]</p></div>
+          <div class="rule"><p><b class="if">If</b>[Condition.]</p><p><b class="then">Then</b>[Action.]</p></div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr></thead>
+            <tbody>
+              <tr><td>[Risk]</td><td><span class="pill high">High</span></td><td><span class="pill high">High</span></td><td>[How it is reduced.]</td></tr>
+              <tr><td>[Risk]</td><td><span class="pill mid">Medium</span></td><td><span class="pill mid">Medium</span></td><td>[How.]</td></tr>
+              <tr><td>[Risk]</td><td><span class="pill low">Low</span></td><td><span class="pill high">High</span></td><td>[How.]</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 24 RECOMMENDATION ================= -->
+      <!-- A direct answer to one question, with the verdict in a single line. -->
+      <section id="recommendation" aria-labelledby="h-rec">
+        <header><p class="kicker">Answer</p><h2 id="h-rec">[The question being answered]</h2></header>
+        <div class="answer">
+          <p class="verdict-line">[The verdict in one sentence.]</p>
+          <p>[Why, in two or three sentences, and what would change the answer.]</p>
+        </div>
+      </section>
+
+      <!-- ================= 25 DOCUMENT LIBRARY ================= -->
+      <section id="library" aria-labelledby="h-lib">
+        <header><p class="kicker">Library</p><h2 id="h-lib">How this fits the other documents</h2></header>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Document</th><th>Use it for</th></tr></thead>
+            <tbody>
+              <tr><td>[Report name]</td><td>[What it is the source for.]</td></tr>
+              <tr><td>[Report name]</td><td>[What it is the source for.]</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="note"><b>[Differences resolved here.]</b> [Where earlier documents disagree and which this report follows.]</div>
+      </section>
+
+      <!-- ================= 26 COLLAPSIBLE CONTENT ================= -->
+      <!-- Native <details>: no script needed to open or close one. Put long or optional material here
+           (appendices, detail, worked examples). Add the word "open" to <details> to start it expanded.
+           Anything can go in .fold-body: prose, lists, tables, notes, code. Copy a <details> block to add more. -->
+      <section id="details" aria-labelledby="h-det">
+        <header><p class="kicker">Detail</p><h2 id="h-det">[Optional detail, for readers who want it]</h2></header>
+        <div class="prose"><p>[Why this material is folded away, and who should open it.]</p></div>
+        <div class="fold-tools"><button class="btn" type="button" data-fold="#details" data-open="1">Expand all</button><button class="btn" type="button" data-fold="#details" data-open="0">Collapse all</button></div>
+        <div class="folds">
+          <details class="fold" open>
+            <summary>[Collapsible title, open by default]<span class="chip">[Optional tag]</span></summary>
+            <div class="fold-body">
+              <div class="prose"><p>[Body text. Anything from the other sections can sit here.]</p></div>
+              <ul><li>[Point.]</li><li>[Point.]</li></ul>
+              <div class="note"><b>[Note.]</b> [Context for this block.]</div>
+            </div>
+          </details>
+          <details class="fold">
+            <summary>[Collapsible title]<span class="chip cost">[$0]</span></summary>
+            <div class="fold-body">
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>[Column]</th><th>[Column]</th></tr></thead>
+                  <tbody><tr><td>[Cell]</td><td>[Cell]</td></tr></tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+          <details class="fold">
+            <summary>[Collapsible title]</summary>
+            <div class="fold-body">
+              <div class="prose"><p>[Body text.]</p></div>
+<pre aria-label="Example"><code>[code or command]</code></pre>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- ================= 27 FAQ ================= -->
+      <!-- Questions grouped by topic. Write each question as the reader would ask it, and answer in the first sentence.
+           Copy a <details> block to add a question, or a <div class="faq-group"> to add a topic. -->
+      <section id="faq" aria-labelledby="h-faq">
+        <header><p class="kicker">Questions</p><h2 id="h-faq">Frequently asked questions</h2></header>
+        <div class="prose"><p>[Who these questions come from, and where to send anything not covered here.]</p></div>
+        <div class="fold-tools"><button class="btn" type="button" data-fold="#faq" data-open="1">Expand all</button><button class="btn" type="button" data-fold="#faq" data-open="0">Collapse all</button></div>
+        <div class="faq">
+          <div class="faq-group">
+            <h3>[Topic one]</h3>
+            <details>
+              <summary>[Question, phrased as the reader would ask it?]</summary>
+              <div class="answer-body"><p>[Direct answer in the first sentence. Then the detail, with <strong>bold</strong> for the part to remember.]</p></div>
+            </details>
+            <details>
+              <summary>[Second question?]</summary>
+              <div class="answer-body"><p>[Answer.]</p><ul><li>[Supporting point.]</li><li>[Supporting point.]</li></ul></div>
+            </details>
+          </div>
+          <div class="faq-group" style="margin-top:28px">
+            <h3>[Topic two]</h3>
+            <details>
+              <summary>[Question?]</summary>
+              <div class="answer-body"><p>[Answer. Link to the relevant section: <a href="#rules">decision rules</a>.]</p></div>
+            </details>
+            <details>
+              <summary>[Question?]</summary>
+              <div class="answer-body"><p>[Answer.]</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 28 SOURCES ================= -->
+      <section id="sources" aria-labelledby="h-src">
+        <header><p class="kicker">References</p><h2 id="h-src">Sources</h2></header>
+        <div class="prose"><p>Checked [Month D, YYYY]. [Which files, systems or pages the findings come from, and which figures were carried over from other reports.]</p></div>
+        <div class="sources">
+          <section><h4>[Group one]</h4><ul>
+            <li><a href="https://example.com">[Source title]</a></li>
+            <li><a href="https://example.com">[Source title]</a></li>
+          </ul></section>
+          <section><h4>[Group two]</h4><ul>
+            <li><a href="https://example.com">[Source title]</a></li>
+          </ul></section>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="end">
+    <span>[Brand or organization line]</span>
+    <span>[Report title], [Month D, YYYY]</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var KEY = 'data-report:' + document.title;
+  function get(k) { try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch (e) { return []; } }
+  function put(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage off: ticks last for this visit */ } }
+  function all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function tid(box) { var l = box.closest('.task'); var t = l.querySelector('b') || l.querySelector('span'); return t.textContent.trim().slice(0, 80); }
+  function fmt(x) { return (Math.round(x * 10) / 10).toString(); }
+
+  // tick persistence: boxes, storage key, callback after every change
+  function persist(boxes, key, after) {
+    var done = get(key);
+    function save() { put(key, boxes.filter(function (b) { return b.checked; }).map(tid)); if (after) after(); }
+    boxes.forEach(function (b) { b.checked = done.indexOf(tid(b)) !== -1; b.addEventListener('change', save); });
+    if (after) after();
+    return function clear() { boxes.forEach(function (b) { b.checked = false; }); save(); };
+  }
+
+  // phase cards: ticks + "n of m done"
+  all('#phases .pcard').forEach(function (card, i) {
+    var boxes = all('input[type="checkbox"]', card), p = card.querySelector('[data-prog]');
+    persist(boxes, KEY + ':phase:' + (card.id || i), function () {
+      var n = boxes.filter(function (b) { return b.checked; }).length;
+      if (p) p.textContent = n + ' of ' + boxes.length + ' done';
+    });
+  });
+
+  // workstream filter
+  var chips = all('.fchip'), active = [];
+  function apply() {
+    all('.wsg').forEach(function (g) { g.hidden = active.length > 0 && active.indexOf(g.getAttribute('data-ws')) === -1; });
+    chips.forEach(function (c) {
+      var f = c.getAttribute('data-f');
+      c.setAttribute('aria-pressed', f === 'all' ? String(active.length === 0) : String(active.indexOf(f) !== -1));
+    });
+  }
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var f = c.getAttribute('data-f');
+      if (f === 'all') active = [];
+      else { var i = active.indexOf(f); if (i === -1) active.push(f); else active.splice(i, 1); }
+      apply();
+    });
+  });
+
+  // weekly checklist: resets each Monday, or on demand
+  var wk = document.getElementById('weekly');
+  if (wk) {
+    var d = new Date(); d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    var monday = d.toISOString().slice(0, 10), wboxes = all('input[type="checkbox"]', wk);
+    var lab = document.getElementById('week-label'); if (lab) lab.textContent = 'Week of ' + d.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
+    var clear = persist(wboxes, KEY + ':week:' + monday, function () {
+      var el = document.getElementById('week-progress');
+      if (el) el.textContent = wboxes.filter(function (b) { return b.checked; }).length + ' of ' + wboxes.length + ' done';
+    });
+    var rb = document.getElementById('reset-week'); if (rb) rb.addEventListener('click', clear);
+  }
+
+  // mix chart: data-v is a percentage
+  all('#mix-chart .seg').forEach(function (s) { var v = +s.getAttribute('data-v'); s.style.width = v + '%'; s.textContent = v + '%'; });
+
+  // capacity chart: data-h per segment, slider sets the limit and the full width
+  var slider = document.getElementById('cap-hours');
+  function cap() {
+    var v = +slider.value, mx = +slider.max;
+    document.getElementById('cap-out').textContent = v;
+    all('#cap-chart .sb-row').forEach(function (r) {
+      var tot = 0;
+      all('.seg', r).forEach(function (s) { var h = +s.getAttribute('data-h'); tot += h; s.style.width = (h / mx * 100) + '%'; s.textContent = fmt(h); });
+      r.querySelector('.cap-line').style.left = (v / mx * 100) + '%';
+      var n = r.querySelector('.sb-note'), diff = tot - v;
+      n.textContent = fmt(tot) + ' · ' + (diff > 0 ? fmt(diff) + ' over' : fmt(-diff) + ' spare');
+      n.className = 'sb-note' + (diff > 0 ? ' over' : '');
+    });
+  }
+  if (slider) { slider.addEventListener('input', cap); cap(); }
+
+  // calculator: work back from the goal through four conversion rates
+  var cin = ['goal', 'r1', 'r2', 'r3', 'r4'];
+  function pct(k) { return +document.getElementById('c-' + k).value / 100; }
+  function calc() {
+    if (!document.getElementById('c-goal')) return;
+    var g = +document.getElementById('c-goal').value;
+    document.getElementById('c-goal-o').textContent = g;
+    ['r1', 'r2', 'r3', 'r4'].forEach(function (k) { document.getElementById('c-' + k + '-o').textContent = Math.round(pct(k) * 100) + '%'; });
+    var s4 = g / pct('r4'), s3 = s4 / pct('r3'), s2 = s3 / pct('r2'), s1 = s2 / pct('r1'), w = s1 / 4.33;
+    document.getElementById('c-s4').textContent = fmt(s4);
+    document.getElementById('c-s3').textContent = fmt(s3);
+    document.getElementById('c-s2').textContent = Math.round(s2);
+    document.getElementById('c-s1').textContent = Math.round(s1);
+    document.getElementById('c-wk').textContent = Math.round(w);
+    var v = document.getElementById('calc-verdict'), cp = +v.getAttribute('data-cap');
+    v.textContent = w <= cp
+      ? 'The plan already carries about ' + cp + ' a week, so these rates fit inside it.'
+      : 'The plan already carries about ' + cp + ' a week. At these rates you need ' + Math.round(w - cp) + ' more a week, or a higher rate.';
+  }
+  cin.forEach(function (k) { var el = document.getElementById('c-' + k); if (el) el.addEventListener('input', calc); });
+  calc();
+
+  // expand / collapse all inside a section
+  all('[data-fold]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('data-open') === '1';
+      all('details', document.querySelector(b.getAttribute('data-fold'))).forEach(function (d) { d.open = open; });
+    });
+  });
+
+  // contents sidebar: highlight the section being read
+  var links = all('.toc a[href^="#"]'), spy = {};
+  links.forEach(function (a) { spy[a.getAttribute('href').slice(1)] = a; });
+  function mark(id) {
+    links.forEach(function (a) { a.classList.toggle('is-active', a === spy[id]); });
+    var a = spy[id], box = a && a.closest('.toc');
+    if (a && box && box.scrollHeight > box.clientHeight) {
+      var t = a.offsetTop - box.clientHeight / 2; box.scrollTop = t > 0 ? t : 0;
+    }
+  }
+  if ('IntersectionObserver' in window) {
+    var seen = {};
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { seen[e.target.id] = e.isIntersecting; });
+      var first = all('main > section').filter(function (s) { return seen[s.id]; })[0];
+      if (first && spy[first.id]) mark(first.id);
+    }, { rootMargin: '-15% 0px -70% 0px' });
+    all('main > section').forEach(function (s) { io.observe(s); });
+  }
+
+  // contents: always open as a sidebar on wide screens, collapsed by default on phones
+  var toc = document.getElementById('toc'), narrow = window.matchMedia('(max-width: 899px)');
+  function syncToc() { if (toc) toc.open = !narrow.matches; }
+  syncToc();
+  if (narrow.addEventListener) narrow.addEventListener('change', syncToc);
+  var lastNarrow = narrow.matches;
+  window.addEventListener('resize', function () { if (narrow.matches !== lastNarrow) { lastNarrow = narrow.matches; syncToc(); } });
+  window.addEventListener('load', syncToc);
+})();
+</script>
+</body>
+</html>
