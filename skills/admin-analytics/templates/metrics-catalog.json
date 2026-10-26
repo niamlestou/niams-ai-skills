@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "sessions",
+    "family": "traffic",
+    "name": "Sessions",
+    "tier": "Core",
+    "description": "Total visits. The denominator for most ratios.",
+    "measure": "GA4 Reports, Acquisition",
+    "action": "A swing of 20% or more week on week: split by channel before doing anything else.",
+    "first_party": "Best first-partyServer logs or your own page-view beacon also count visitors who block or decline GA4. Filter out bots."
+  },
+  {
+    "id": "users-and-new-users",
+    "family": "traffic",
+    "name": "Users and new users",
+    "tier": "Core",
+    "description": "Unique reach, and how much of it is first contact.",
+    "measure": "GA4 Reports, Acquisition",
+    "action": "Flat new users with rising sessions means growth is coming from repeat visits only.",
+    "first_party": "First-party worksOwn first-party cookie or a daily-salted hash. Counting people across days needs a stored ID, which may need consent."
+  },
+  {
+    "id": "sessions-by-channel-group",
+    "family": "traffic",
+    "name": "Sessions by channel group",
+    "tier": "Core",
+    "description": "Which channels carry the traffic.",
+    "measure": "GA4 Traffic acquisition report",
+    "action": "One channel above half of all sessions is a concentration risk. Diversify.",
+    "first_party": "First-party worksClassify the referrer and UTM tags on your own endpoint."
+  },
+  {
+    "id": "source-and-medium",
+    "family": "traffic",
+    "name": "Source and medium",
+    "tier": "Core",
+    "description": "The exact origin of each visit.",
+    "measure": "GA4 Traffic acquisition, source / medium",
+    "action": "Many sessions labelled (not set) or (other): fix tagging first.",
+    "first_party": "Best first-partySave referrer and UTM on the first request and store them with the lead. It survives blockers."
+  },
+  {
+    "id": "conversion-rate-by-channel",
+    "family": "traffic",
+    "name": "Conversion rate by channel",
+    "tier": "Core",
+    "description": "Channel quality, not just quantity.",
+    "measure": "GA4 key events divided by sessions, per channel",
+    "action": "Move budget and effort to channels that beat the site average.",
+    "first_party": "Best first-partyJoin stored source to your own lead and order records. No sampling, no consent gap on the conversion side."
+  },
+  {
+    "id": "landing-page-sessions",
+    "family": "traffic",
+    "name": "Landing page sessions",
+    "tier": "Core",
+    "description": "Which pages open the visit.",
+    "measure": "GA4 Landing page report",
+    "action": "Top landing pages with weak engagement are the cheapest fixes.",
+    "first_party": "First-party worksServer logs or beacon, first page of each visit."
+  },
+  {
+    "id": "new-versus-returning-visitors",
+    "family": "traffic",
+    "name": "New versus returning visitors",
+    "tier": "Strong",
+    "description": "Discovery against loyalty.",
+    "measure": "GA4 user acquisition and retention",
+    "action": "Returning share falling while the site depends on repeat sales: add email capture.",
+    "first_party": "First-party worksFirst-party cookie. Browsers shorten script-set cookies, so returning visitors are understated."
+  },
+  {
+    "id": "referring-sites",
+    "family": "traffic",
+    "name": "Referring sites",
+    "tier": "Strong",
+    "description": "Which outside sites send people and what those people do.",
+    "measure": "GA4 source filtered to referral",
+    "action": "A referrer with high engagement: ask for more placements, or a partnership.",
+    "first_party": "First-party worksThe Referer header in your logs."
+  },
+  {
+    "id": "geography-and-city",
+    "family": "traffic",
+    "name": "Geography and city",
+    "tier": "Strong",
+    "description": "Whether visitors are inside the area you serve.",
+    "measure": "GA4 Demographics, location",
+    "action": "Large traffic from places you do not serve: exclude them from ads and reports.",
+    "first_party": "First-party worksLook up the IP at request time and discard it. Do not store raw IPs."
+  },
+  {
+    "id": "device-browser-and-os-split",
+    "family": "traffic",
+    "name": "Device, browser and OS split",
+    "tier": "Strong",
+    "description": "What people use, so you test on it.",
+    "measure": "GA4 Tech details",
+    "action": "Any browser above 5% of traffic with a lower conversion rate gets tested first.",
+    "first_party": "First-party worksParse the user agent on the server."
+  },
+  {
+    "id": "cost-per-session-paid",
+    "family": "traffic",
+    "name": "Cost per session (paid)",
+    "tier": "Strong",
+    "description": "What a visit costs by campaign.",
+    "measure": "Ad spend divided by sessions",
+    "action": "Rising cost with flat conversion rate: pause or rewrite the campaign.",
+    "first_party": "First-party worksYour own session count divided by ad spend you enter or import."
+  },
+  {
+    "id": "seasonality-index",
+    "family": "traffic",
+    "name": "Seasonality index",
+    "tier": "Strong",
+    "description": "Expected high and low months for your business.",
+    "measure": "This month compared with the same month last year",
+    "action": "Compare year on year, never month on month, in a seasonal business.",
+    "first_party": "First-party worksYour own history, kept past any tool's retention limit."
+  },
+  {
+    "id": "day-of-week-and-hour",
+    "family": "traffic",
+    "name": "Day of week and hour",
+    "tier": "Niche",
+    "description": "When visitors arrive and when they convert.",
+    "measure": "GA4 Explore, hour and day dimensions",
+    "action": "Schedule posts, emails, ads and staff cover around the conversion peaks.",
+    "first_party": "First-party worksEvent timestamps."
+  },
+  {
+    "id": "branded-search-trend",
+    "family": "traffic",
+    "name": "Branded search trend",
+    "tier": "Niche",
+    "description": "Brand demand, a proxy for word of mouth and offline reach.",
+    "measure": "Search Console queries containing your name, plus Google Trends",
+    "action": "Falling branded searches signal weakening awareness before revenue shows it.",
+    "first_party": "Not first-partySearch queries are held by Google. You only see the click, not the query."
+  },
+  {
+    "id": "share-of-voice",
+    "family": "traffic",
+    "name": "Share of voice",
+    "tier": "Niche",
+    "description": "Your rank-weighted search visibility against named rivals.",
+    "measure": "SEO tool, tracked keyword set, three competitors",
+    "action": "Rivals gaining on your core topics: prioritise those topic clusters.",
+    "first_party": "Not first-partyNeeds rank data from search results, which only rank trackers hold."
+  },
+  {
+    "id": "dark-social-proxy",
+    "family": "traffic",
+    "name": "Dark social proxy",
+    "tier": "Niche",
+    "description": "Shares in chats and email apps, which arrive as Direct.",
+    "measure": "GA4 Direct sessions landing on deep URLs, not the homepage",
+    "action": "High deep-URL direct traffic: add share buttons and trackable short links.",
+    "first_party": "Best first-partyServer logs show deep-URL arrivals with no referrer, with no tag needed."
+  },
+  {
+    "id": "traffic-from-ai-assistants",
+    "family": "traffic",
+    "name": "Traffic from AI assistants",
+    "tier": "Niche",
+    "description": "Whether chat and answer engines send visitors, and to which pages.",
+    "measure": "GA4 source filter for chatgpt.com, perplexity.ai, gemini.google.com and similar",
+    "action": "Strengthen the pages being cited; add clear answers and structured data.",
+    "first_party": "First-party worksReferrer header and user agent in logs. Some assistants send neither. Logs also show AI crawler visits."
+  },
+  {
+    "id": "utm-coverage",
+    "family": "traffic",
+    "name": "UTM coverage",
+    "tier": "Niche",
+    "description": "Share of campaign visits carrying a campaign tag.",
+    "measure": "GA4 sessions where campaign is (not set), from email, ads and social",
+    "action": "Below full coverage, channel reports mislead. Enforce one naming sheet.",
+    "first_party": "First-party worksYour endpoint can flag landing requests that arrive without tags."
+  },
+  {
+    "id": "engagement-rate",
+    "family": "engagement",
+    "name": "Engagement rate",
+    "tier": "Core",
+    "description": "Share of sessions that were engaged (the 10 second, key event or 2 page view test).",
+    "measure": "GA4 Engagement reports",
+    "action": "Landing pages under the site average: fix headline, intent match and speed.",
+    "first_party": "First-party worksYour own timer, scroll and click events. Copy GA4's rule (10 seconds, key event, 2 views) to stay comparable."
+  },
+  {
+    "id": "bounce-rate-ga4",
+    "family": "engagement",
+    "name": "Bounce rate (GA4)",
+    "tier": "Strong",
+    "description": "The inverse of engagement rate. Not the old Universal Analytics number.",
+    "measure": "GA4 Explore, bounce rate metric",
+    "action": "Use it only as the flip side of engagement. Do not compare with old reports.",
+    "first_party": "First-party worksInvert your own engagement rate. Do not build a second definition."
+  },
+  {
+    "id": "average-engagement-time",
+    "family": "engagement",
+    "name": "Average engagement time",
+    "tier": "Strong",
+    "description": "Foreground time with the page active, not idle tabs.",
+    "measure": "GA4 Engagement overview",
+    "action": "Short time on an answer page can be good. Read it with conversions.",
+    "first_party": "First-party worksPage Visibility heartbeat from your script. Accuracy depends on that script."
+  },
+  {
+    "id": "pages-per-session",
+    "family": "engagement",
+    "name": "Pages per session",
+    "tier": "Strong",
+    "description": "Depth of exploration.",
+    "measure": "GA4 Engagement overview",
+    "action": "Low on a site built for browsing: improve related links and navigation.",
+    "first_party": "First-party worksCount page requests per visit."
+  },
+  {
+    "id": "scroll-depth",
+    "family": "engagement",
+    "name": "Scroll depth",
+    "tier": "Strong",
+    "description": "Whether readers reach your call to action.",
+    "measure": "GA4 enhanced measurement fires at 90%. Add 25, 50, 75 as custom events",
+    "action": "If most readers stop at 50%, move the call to action above that line.",
+    "first_party": "First-party worksA small own script posts 25, 50, 75, 90."
+  },
+  {
+    "id": "key-page-click-through",
+    "family": "engagement",
+    "name": "Key page click-through",
+    "tier": "Core",
+    "description": "Share of visitors who click the main call to action.",
+    "measure": "GA4 click events on the button, divided by page views",
+    "action": "Under your own baseline: test copy, colour contrast, position.",
+    "first_party": "First-party worksClick listener posting to your endpoint."
+  },
+  {
+    "id": "exit-rate-by-page",
+    "family": "engagement",
+    "name": "Exit rate by page",
+    "tier": "Strong",
+    "description": "Where visits end.",
+    "measure": "GA4 Explore, exits divided by views",
+    "action": "Exits on pages that are not goal pages are leaks. Add a next step.",
+    "first_party": "First-party worksLast page of each visit."
+  },
+  {
+    "id": "internal-search-usage",
+    "family": "engagement",
+    "name": "Internal search usage",
+    "tier": "Strong",
+    "description": "Share of sessions that use site search.",
+    "measure": "GA4 view_search_results event",
+    "action": "High usage means navigation fails. Rework menus and category pages.",
+    "first_party": "Best first-partyYour server sees every search directly, with no tag to maintain."
+  },
+  {
+    "id": "top-internal-search-terms",
+    "family": "engagement",
+    "name": "Top internal search terms",
+    "tier": "Strong",
+    "description": "Live demand in the visitors' own words.",
+    "measure": "GA4 search_term parameter",
+    "action": "Terms with no matching page become new pages or products.",
+    "first_party": "Best first-partyLogged by your own search code, in full."
+  },
+  {
+    "id": "zero-result-search-rate",
+    "family": "engagement",
+    "name": "Zero-result search rate",
+    "tier": "Niche",
+    "description": "Searches that return nothing.",
+    "measure": "Site search logs or GA4 custom event",
+    "action": "Every top zero-result term: add content, a synonym or a redirect.",
+    "first_party": "Best first-partyOnly your server knows how many results it returned. Third-party tools never see this without custom code."
+  },
+  {
+    "id": "search-exit-rate",
+    "family": "engagement",
+    "name": "Search exit rate",
+    "tier": "Niche",
+    "description": "Visitors who search and then leave.",
+    "measure": "GA4 funnel: search then exit",
+    "action": "High rate: the results page is not answering. Fix ranking of results.",
+    "first_party": "First-party worksLast event of a visit is a search."
+  },
+  {
+    "id": "rage-clicks",
+    "family": "engagement",
+    "name": "Rage clicks",
+    "tier": "Niche",
+    "description": "Repeated fast clicks on one spot: broken or misleading elements.",
+    "measure": "Session replay tool (Microsoft Clarity, Hotjar)",
+    "action": "Cluster on one element: fix it before sending more traffic.",
+    "first_party": "Possible, not advisedClick-cluster detection is a few dozen lines, but replay is costly to build. Use a replay tool."
+  },
+  {
+    "id": "dead-clicks",
+    "family": "engagement",
+    "name": "Dead clicks",
+    "tier": "Niche",
+    "description": "Clicks that do nothing, often on things that look like buttons.",
+    "measure": "Session replay tool",
+    "action": "Make it a link or remove the styling that suggests it is one.",
+    "first_party": "Possible, not advisedNeeds element-level event capture and upkeep. Use a replay tool."
+  },
+  {
+    "id": "quick-backs",
+    "family": "engagement",
+    "name": "Quick backs",
+    "tier": "Niche",
+    "description": "Visitor lands, then hits back within seconds.",
+    "measure": "Session replay tool",
+    "action": "Message mismatch with the ad or search result. Rewrite the page top.",
+    "first_party": "Possible, not advisedBack navigation is hard to detect reliably. Use a replay tool."
+  },
+  {
+    "id": "excessive-scrolling",
+    "family": "engagement",
+    "name": "Excessive scrolling",
+    "tier": "Niche",
+    "description": "Fast up-and-down scrolling that signals searching, not reading.",
+    "measure": "Session replay tool",
+    "action": "Add a summary, anchors or a table of contents near the top.",
+    "first_party": "Possible, not advisedNeeds replay-grade capture. Use a replay tool."
+  },
+  {
+    "id": "copy-events",
+    "family": "engagement",
+    "name": "Copy events",
+    "tier": "Niche",
+    "description": "Visitors copying a phone number, email or address.",
+    "measure": "Custom GA4 event on copy",
+    "action": "A copy is intent. Make that detail a tap-to-call or mailto link.",
+    "first_party": "First-party worksCopy listener posting to your endpoint. Do not capture the copied text."
+  },
+  {
+    "id": "tap-to-call-email-and-directions-clicks",
+    "family": "engagement",
+    "name": "Tap-to-call, email and directions clicks",
+    "tier": "Core",
+    "description": "Direct contact intent, vital for local and service sites.",
+    "measure": "GA4 click events on tel:, mailto: and map links",
+    "action": "Treat each as a conversion. Track by page and campaign.",
+    "first_party": "First-party worksClick listener on tel:, mailto: and map links. It shows intent, not a connected call."
+  },
+  {
+    "id": "video-plays-and-completion",
+    "family": "engagement",
+    "name": "Video plays and completion",
+    "tier": "Strong",
+    "description": "Whether video earns attention.",
+    "measure": "GA4 video events or the host's analytics",
+    "action": "Drop-off at one point: cut or re-edit that moment.",
+    "first_party": "First-party worksPlayer events posted from your page. Video hosts report their own plays too."
+  },
+  {
+    "id": "file-downloads-and-outbound-clicks",
+    "family": "engagement",
+    "name": "File downloads and outbound clicks",
+    "tier": "Strong",
+    "description": "Interest in assets, and where you send people away.",
+    "measure": "GA4 enhanced measurement",
+    "action": "High downloads: gate or follow up. High outbound: check you are not leaking buyers.",
+    "first_party": "Best first-partyServer logs record every download, including direct links from other sites. Outbound clicks need a listener."
+  },
+  {
+    "id": "heatmap-click-distribution",
+    "family": "engagement",
+    "name": "Heatmap click distribution",
+    "tier": "Strong",
+    "description": "Where attention and clicks cluster on a page.",
+    "measure": "Heatmap tool",
+    "action": "Most clicks go to non-links: relocate the real call to action.",
+    "first_party": "Possible, not advisedYou can log x and y clicks, but drawing heatmaps on responsive layouts is costly. Use a tool."
+  },
+  {
+    "id": "returning-visitor-frequency",
+    "family": "engagement",
+    "name": "Returning visitor frequency",
+    "tier": "Strong",
+    "description": "How often and how recently people come back.",
+    "measure": "GA4 Explore, cohort or user lifetime",
+    "action": "Long gaps: use email or reminders to bring them back.",
+    "first_party": "First-party worksFirst-party ID. Limited by cookie lifespan."
+  },
+  {
+    "id": "time-to-first-interaction",
+    "family": "engagement",
+    "name": "Time to first interaction",
+    "tier": "Niche",
+    "description": "How soon a visitor clicks, taps or scrolls.",
+    "measure": "Custom event timestamp, or RUM tooling",
+    "action": "Slow first interaction on mobile: a layout or speed problem.",
+    "first_party": "Best first-partyYour script can timestamp the first interaction, which few tools expose."
+  },
+  {
+    "id": "conversion-rate",
+    "family": "conversion",
+    "name": "Conversion rate",
+    "tier": "Core",
+    "description": "Share of sessions that reach a key event.",
+    "measure": "GA4 key events divided by sessions",
+    "action": "Track by channel, device and landing page. Test the weakest large segment.",
+    "first_party": "Best first-partyYour own lead and order records are the source of truth. Only the session count can be undercounted."
+  },
+  {
+    "id": "key-event-volume",
+    "family": "conversion",
+    "name": "Key event volume",
+    "tier": "Core",
+    "description": "Absolute count of the actions that matter.",
+    "measure": "GA4 key events report",
+    "action": "Falling count with steady traffic: check tracking and form delivery first.",
+    "first_party": "Best first-partyYour database counts every submission, including from visitors who block analytics."
+  },
+  {
+    "id": "lead-volume",
+    "family": "conversion",
+    "name": "Lead volume",
+    "tier": "Core",
+    "description": "Enquiries received.",
+    "measure": "CRM or form tool, matched to GA4",
+    "action": "Compare to form events. A gap means leads are being lost.",
+    "first_party": "Best first-partyYour own lead store. Store the lead before sending any email so nothing is lost."
+  },
+  {
+    "id": "cost-per-lead",
+    "family": "conversion",
+    "name": "Cost per lead",
+    "tier": "Core",
+    "description": "What an enquiry costs.",
+    "measure": "Marketing spend divided by leads",
+    "action": "Rising: look at ad quality, landing page and tracking before cutting spend.",
+    "first_party": "First-party worksOwn lead count divided by spend you record."
+  },
+  {
+    "id": "customer-acquisition-cost-cac",
+    "family": "conversion",
+    "name": "Customer acquisition cost (CAC)",
+    "tier": "Core",
+    "description": "Full cost to win a customer.",
+    "measure": "Sales and marketing spend divided by new customers",
+    "action": "Above your margin-based limit: fix the weakest channel or the close rate.",
+    "first_party": "First-party worksBilling and CRM records are first-party data."
+  },
+  {
+    "id": "return-on-ad-spend-roas",
+    "family": "conversion",
+    "name": "Return on ad spend (ROAS)",
+    "tier": "Core",
+    "description": "Revenue per advertising dollar.",
+    "measure": "Ad revenue divided by ad spend",
+    "action": "Use profit on ad spend where margins differ by product.",
+    "first_party": "Best first-partyYour own order revenue is the honest numerator. Ad platforms grade their own work."
+  },
+  {
+    "id": "marketing-efficiency-ratio",
+    "family": "conversion",
+    "name": "Marketing efficiency ratio",
+    "tier": "Strong",
+    "description": "Total revenue divided by total marketing spend. Immune to attribution fights.",
+    "measure": "Finance data, not analytics",
+    "action": "Falling while channel ROAS looks fine: attribution is flattering something.",
+    "first_party": "First-party worksFinance and order data, not analytics."
+  },
+  {
+    "id": "revenue",
+    "family": "conversion",
+    "name": "Revenue",
+    "tier": "Core",
+    "description": "Money in, by source.",
+    "measure": "Payment processor or GA4 purchase",
+    "action": "Reconcile monthly with the payment processor. They should match closely.",
+    "first_party": "Best first-partyYour order and payment records. Reconcile analytics to them."
+  },
+  {
+    "id": "average-order-value",
+    "family": "conversion",
+    "name": "Average order value",
+    "tier": "Core",
+    "description": "Spend per order.",
+    "measure": "Revenue divided by orders",
+    "action": "Low: test bundles, thresholds for free shipping, add-ons.",
+    "first_party": "First-party worksOrder records."
+  },
+  {
+    "id": "revenue-per-session",
+    "family": "conversion",
+    "name": "Revenue per session",
+    "tier": "Core",
+    "description": "Revenue divided by sessions. Combines conversion rate and order value.",
+    "measure": "GA4 Monetization, or revenue divided by sessions",
+    "action": "Best single number for judging a test or a page change.",
+    "first_party": "First-party worksOwn orders divided by own session count."
+  },
+  {
+    "id": "add-to-cart-rate",
+    "family": "conversion",
+    "name": "Add-to-cart rate",
+    "tier": "Strong",
+    "description": "Interest turning into intent.",
+    "measure": "GA4 add_to_cart divided by product views",
+    "action": "Low: improve photos, price clarity, reviews on the product page.",
+    "first_party": "First-party worksCart events logged server-side."
+  },
+  {
+    "id": "cart-abandonment-rate",
+    "family": "conversion",
+    "name": "Cart abandonment rate",
+    "tier": "Strong",
+    "description": "Shoppers who start and do not finish. The Baymard average across 50 studies is 70.22%.",
+    "measure": "Orders divided by carts started",
+    "action": "Top reason there is extra costs (40%). Show total cost early and offer guest checkout.",
+    "first_party": "Best first-partyA carts table with created and completed states, including visitors who declined analytics."
+  },
+  {
+    "id": "checkout-step-drop-off",
+    "family": "conversion",
+    "name": "Checkout step drop-off",
+    "tier": "Core",
+    "description": "The exact step where buyers quit.",
+    "measure": "GA4 funnel exploration",
+    "action": "Fix the largest single drop first: shipping, account wall, payment.",
+    "first_party": "First-party worksLog each step on the server."
+  },
+  {
+    "id": "payment-failure-rate",
+    "family": "conversion",
+    "name": "Payment failure rate",
+    "tier": "Niche",
+    "description": "Declined or errored payments.",
+    "measure": "Payment processor dashboard",
+    "action": "High rate: add wallets, check card verification settings, test on mobile.",
+    "first_party": "First-party worksProcessor webhooks into your own database. The processor dashboard stays the primary source."
+  },
+  {
+    "id": "form-completion-rate",
+    "family": "conversion",
+    "name": "Form completion rate",
+    "tier": "Core",
+    "description": "Starts that become submissions.",
+    "measure": "GA4 form_start and form_submit",
+    "action": "Below your baseline: shorten the form, fix errors, add reassurance.",
+    "first_party": "First-party worksSubmits are logged server-side. Starts need a small client script."
+  },
+  {
+    "id": "form-field-drop-off",
+    "family": "conversion",
+    "name": "Form field drop-off",
+    "tier": "Niche",
+    "description": "Which field makes people quit.",
+    "measure": "Form analytics or session replay",
+    "action": "Remove or make optional the field with the largest exit.",
+    "first_party": "Possible, not advisedPossible with focus and blur events, but risks capturing typed text and costs upkeep. Use a form tool."
+  },
+  {
+    "id": "form-error-rate",
+    "family": "conversion",
+    "name": "Form error rate",
+    "tier": "Niche",
+    "description": "Validation errors per submission attempt.",
+    "measure": "Custom event on validation error",
+    "action": "Frequent errors on one field: loosen the rule or clarify the format.",
+    "first_party": "Best first-partyYour server-side validation already knows every error. Log it."
+  },
+  {
+    "id": "micro-conversions",
+    "family": "conversion",
+    "name": "Micro-conversions",
+    "tier": "Strong",
+    "description": "Early signals: pricing view, newsletter signup, video watched.",
+    "measure": "GA4 events",
+    "action": "Use them when macro conversions are too rare to measure within weeks.",
+    "first_party": "First-party worksCustom events to your own endpoint."
+  },
+  {
+    "id": "funnel-conversion-by-step",
+    "family": "conversion",
+    "name": "Funnel conversion by step",
+    "tier": "Core",
+    "description": "Every stage from landing to goal.",
+    "measure": "GA4 funnel exploration",
+    "action": "Fix steps in order of drop-off volume, not order of the funnel.",
+    "first_party": "First-party worksOwn event table and a SQL query, or a self-hosted tool."
+  },
+  {
+    "id": "lead-to-qualified-rate",
+    "family": "conversion",
+    "name": "Lead to qualified rate",
+    "tier": "Core",
+    "description": "Share of leads sales accepts.",
+    "measure": "CRM stages by source and landing page",
+    "action": "Channels with many leads but few qualified: change targeting or form questions.",
+    "first_party": "Best first-partyCRM stages only you hold."
+  },
+  {
+    "id": "lead-to-customer-rate",
+    "family": "conversion",
+    "name": "Lead to customer rate",
+    "tier": "Core",
+    "description": "True lead quality, by source.",
+    "measure": "CRM, source captured on the form",
+    "action": "Judge channels by customers, not leads.",
+    "first_party": "Best first-partyYour CRM joined to stored source. No third-party tool has this."
+  },
+  {
+    "id": "speed-to-lead",
+    "family": "conversion",
+    "name": "Speed to lead",
+    "tier": "Niche",
+    "description": "Time from form submission to the first human reply.",
+    "measure": "CRM timestamps, or form tool plus inbox",
+    "action": "Set an alert. Slow replies lose leads that cost money to acquire.",
+    "first_party": "Best first-partyOnly your own timestamps (submitted, first reply) can measure it."
+  },
+  {
+    "id": "call-answer-rate-and-missed-calls",
+    "family": "conversion",
+    "name": "Call answer rate and missed calls",
+    "tier": "Niche",
+    "description": "Whether paid-for calls reach a person.",
+    "measure": "Call tracking provider",
+    "action": "Missed calls in business hours: route to staff or a text-back.",
+    "first_party": "Not first-partyPhone data lives with the provider. Import it if they offer webhooks."
+  },
+  {
+    "id": "calls-longer-than-60-seconds",
+    "family": "conversion",
+    "name": "Calls longer than 60 seconds",
+    "tier": "Strong",
+    "description": "Calls that were real conversations.",
+    "measure": "Call tracking provider",
+    "action": "Use as the call conversion in ads, not raw call count.",
+    "first_party": "Not first-partyCall length lives with the call-tracking provider. Import it if possible."
+  },
+  {
+    "id": "sales-cycle-length",
+    "family": "conversion",
+    "name": "Sales cycle length",
+    "tier": "Strong",
+    "description": "Days from first touch to close.",
+    "measure": "CRM",
+    "action": "Lengthening cycle: add proof, pricing clarity or follow-up content.",
+    "first_party": "Best first-partyCRM timestamps."
+  },
+  {
+    "id": "sessions-to-convert",
+    "family": "conversion",
+    "name": "Sessions to convert",
+    "tier": "Niche",
+    "description": "Visits per customer before they act.",
+    "measure": "GA4 Advertising, conversion paths",
+    "action": "Many touches: invest in retargeting, email and remarketing content.",
+    "first_party": "First-party worksNeeds a stored visitor ID across visits. Cookie lifespan and consent limit it."
+  },
+  {
+    "id": "assisted-conversions",
+    "family": "conversion",
+    "name": "Assisted conversions",
+    "tier": "Strong",
+    "description": "Channels that help but do not close.",
+    "measure": "GA4 Advertising, attribution",
+    "action": "Do not cut channels that assist heavily just because they close little.",
+    "first_party": "Possible, not advisedFirst and last touch are easy. A full multi-touch model is costly and easy to get wrong."
+  },
+  {
+    "id": "pricing-page-to-conversion",
+    "family": "conversion",
+    "name": "Pricing page to conversion",
+    "tier": "Niche",
+    "description": "Intent from visitors who looked at price.",
+    "measure": "GA4 funnel, pricing page as step one",
+    "action": "Low: price presentation, plan clarity, or missing proof.",
+    "first_party": "First-party worksPage view event then conversion for the same visitor."
+  },
+  {
+    "id": "booking-or-demo-show-rate",
+    "family": "conversion",
+    "name": "Booking or demo show rate",
+    "tier": "Niche",
+    "description": "Booked appointments that actually happen.",
+    "measure": "Calendar tool plus CRM",
+    "action": "Low show rate: add reminders, shorten the lead time.",
+    "first_party": "Best first-partyYour bookings table with attendance marked."
+  },
+  {
+    "id": "customer-lifetime-value",
+    "family": "conversion",
+    "name": "Customer lifetime value",
+    "tier": "Core",
+    "description": "Total margin per customer over time.",
+    "measure": "Cohort revenue less costs",
+    "action": "Set CAC limits from this, not from first-order revenue.",
+    "first_party": "Best first-partyYour own order and billing history."
+  },
+  {
+    "id": "lifetime-value-to-cac-ratio",
+    "family": "conversion",
+    "name": "Lifetime value to CAC ratio",
+    "tier": "Core",
+    "description": "Whether growth pays for itself.",
+    "measure": "LTV divided by CAC",
+    "action": "Low ratio: improve retention or cut acquisition cost before scaling spend.",
+    "first_party": "Best first-partyBoth inputs come from your own records."
+  },
+  {
+    "id": "cac-payback-period",
+    "family": "conversion",
+    "name": "CAC payback period",
+    "tier": "Strong",
+    "description": "Months to earn back acquisition cost.",
+    "measure": "CAC divided by monthly margin per customer",
+    "action": "Long payback strains cash. Raise prices, upsell or lower CAC.",
+    "first_party": "First-party worksBilling and spend records."
+  },
+  {
+    "id": "repeat-purchase-rate",
+    "family": "conversion",
+    "name": "Repeat purchase rate",
+    "tier": "Core",
+    "description": "Customers who buy again.",
+    "measure": "Orders per customer, cohort",
+    "action": "Low: build post-purchase email and reorder prompts.",
+    "first_party": "Best first-partyOrders grouped by customer in your own database."
+  },
+  {
+    "id": "refund-and-return-rate",
+    "family": "conversion",
+    "name": "Refund and return rate",
+    "tier": "Strong",
+    "description": "Fit between promise and product.",
+    "measure": "Order system",
+    "action": "High on one product: fix the page description or the product.",
+    "first_party": "Best first-partyYour order system."
+  },
+  {
+    "id": "coupon-code-usage",
+    "family": "conversion",
+    "name": "Coupon code usage",
+    "tier": "Niche",
+    "description": "Discount dependence, and leaks to coupon sites.",
+    "measure": "Order system, code field entries",
+    "action": "Many empty-field coupon searches: hide the code box or offer an on-page code.",
+    "first_party": "Best first-partyYour order system records each code used."
+  },
+  {
+    "id": "revenue-per-page",
+    "family": "conversion",
+    "name": "Revenue per page",
+    "tier": "Niche",
+    "description": "Which pages earn, including content that assists.",
+    "measure": "GA4 page value or attributed conversions",
+    "action": "Put internal links to top earners on high-traffic pages.",
+    "first_party": "First-party worksRevenue by stored landing page works. Splitting credit across a whole path is a model: not advised."
+  },
+  {
+    "id": "largest-contentful-paint-lcp",
+    "family": "performance",
+    "name": "Largest Contentful Paint (LCP)",
+    "tier": "Core",
+    "description": "How fast the main content appears. Good: 2.5 seconds or less.",
+    "measure": "PageSpeed Insights, Search Console Core Web Vitals report",
+    "action": "Over 2.5 s: compress the hero image, preload it, fix server response.",
+    "first_party": "First-party worksGoogle's open-source web-vitals library can send your own real-user data. Browser support varies."
+  },
+  {
+    "id": "interaction-to-next-paint-inp",
+    "family": "performance",
+    "name": "Interaction to Next Paint (INP)",
+    "tier": "Core",
+    "description": "How fast the page responds to taps and clicks. Good: 200 ms or less.",
+    "measure": "PageSpeed Insights, Search Console",
+    "action": "Over 200 ms: cut long JavaScript tasks and heavy third-party scripts.",
+    "first_party": "First-party worksSame library. Covers pages too small to appear in Google's report."
+  },
+  {
+    "id": "cumulative-layout-shift-cls",
+    "family": "performance",
+    "name": "Cumulative Layout Shift (CLS)",
+    "tier": "Core",
+    "description": "Visual stability. Good: 0.1 or less.",
+    "measure": "PageSpeed Insights, Search Console",
+    "action": "Over 0.1: set image sizes, reserve space for embeds and banners.",
+    "first_party": "First-party worksSame library."
+  },
+  {
+    "id": "share-of-urls-passing-core-web-vitals",
+    "family": "performance",
+    "name": "Share of URLs passing Core Web Vitals",
+    "tier": "Core",
+    "description": "Site-wide pass rate, mobile and desktop.",
+    "measure": "Search Console Core Web Vitals report",
+    "action": "Fix the largest group of similar failing URLs first (one template fixes many).",
+    "first_party": "First-party worksCompute it from your own real-user data per URL. Search Console gives Google's view."
+  },
+  {
+    "id": "time-to-first-byte-ttfb",
+    "family": "performance",
+    "name": "Time to First Byte (TTFB)",
+    "tier": "Strong",
+    "description": "Server response time. A diagnostic for slow LCP.",
+    "measure": "PageSpeed Insights, real-user monitoring",
+    "action": "High TTFB: caching, a CDN, database or hosting tier.",
+    "first_party": "Best first-partyServer timing in your own logs is exact."
+  },
+  {
+    "id": "first-contentful-paint-fcp",
+    "family": "performance",
+    "name": "First Contentful Paint (FCP)",
+    "tier": "Strong",
+    "description": "First visible paint. A diagnostic for render-blocking resources.",
+    "measure": "PageSpeed Insights",
+    "action": "Late FCP: inline critical CSS, defer scripts and fonts.",
+    "first_party": "First-party worksReal-user library."
+  },
+  {
+    "id": "total-blocking-time-tbt",
+    "family": "performance",
+    "name": "Total Blocking Time (TBT)",
+    "tier": "Strong",
+    "description": "Lab proxy for responsiveness.",
+    "measure": "Lighthouse",
+    "action": "High TBT: split bundles, remove unused scripts.",
+    "first_party": "Not first-partyA lab-only metric. Run Lighthouse in your build pipeline."
+  },
+  {
+    "id": "mobile-versus-desktop-gap",
+    "family": "performance",
+    "name": "Mobile versus desktop gap",
+    "tier": "Strong",
+    "description": "Where the experience is worse.",
+    "measure": "Core Web Vitals report split by device",
+    "action": "Mobile much worse: test on a mid-range phone and throttled network.",
+    "first_party": "First-party worksSplit your own real-user data by device."
+  },
+  {
+    "id": "page-weight-and-request-count",
+    "family": "performance",
+    "name": "Page weight and request count",
+    "tier": "Strong",
+    "description": "Bytes and files per page.",
+    "measure": "Browser network panel, PageSpeed Insights",
+    "action": "Heavy pages: modern image formats, lazy-load below the fold, drop unused libraries.",
+    "first_party": "First-party worksBuild output and the browser's Resource Timing."
+  },
+  {
+    "id": "javascript-bundle-size",
+    "family": "performance",
+    "name": "JavaScript bundle size",
+    "tier": "Strong",
+    "description": "The cost of code shipped to every visitor.",
+    "measure": "Build output, Lighthouse treemap",
+    "action": "Growing release by release: set a budget and fail builds that exceed it.",
+    "first_party": "Best first-partyYour own build already knows. Fail builds over budget."
+  },
+  {
+    "id": "third-party-script-cost",
+    "family": "performance",
+    "name": "Third-party script cost",
+    "tier": "Niche",
+    "description": "Time added by chat, ads, tags and widgets.",
+    "measure": "Lighthouse third-party summary",
+    "action": "Remove any tag nobody reads. Load the rest after interaction.",
+    "first_party": "First-party worksResource Timing in your real-user data. Lighthouse is easier for a one-off."
+  },
+  {
+    "id": "field-versus-lab-gap",
+    "family": "performance",
+    "name": "Field versus lab gap",
+    "tier": "Niche",
+    "description": "Whether tests reflect real users.",
+    "measure": "CrUX data against Lighthouse",
+    "action": "Large gap: your audience has slower devices or networks than your tests.",
+    "first_party": "First-party worksYour real-user data against your pipeline's Lighthouse."
+  },
+  {
+    "id": "uptime",
+    "family": "performance",
+    "name": "Uptime",
+    "tier": "Core",
+    "description": "Share of time the site is reachable.",
+    "measure": "Uptime monitor with alerts",
+    "action": "Any outage: alert the owner and write down cause and fix.",
+    "first_party": "Possible, not advisedA monitor on the same server cannot see its own outage. Use an outside monitor."
+  },
+  {
+    "id": "server-error-rate-5xx",
+    "family": "performance",
+    "name": "Server error rate (5xx)",
+    "tier": "Core",
+    "description": "Requests failing on your side.",
+    "measure": "Host logs, monitoring",
+    "action": "Rising: check recent deploys before anything else.",
+    "first_party": "Best first-partyServer logs record every failure, including ones no browser script can report."
+  },
+  {
+    "id": "mean-time-to-recovery",
+    "family": "performance",
+    "name": "Mean time to recovery",
+    "tier": "Strong",
+    "description": "How fast you fix outages.",
+    "measure": "Incident log",
+    "action": "Long recovery: add automatic rollback and clearer alerts.",
+    "first_party": "First-party worksYour own incident log."
+  },
+  {
+    "id": "javascript-errors-per-1-000-sessions",
+    "family": "performance",
+    "name": "JavaScript errors per 1,000 sessions",
+    "tier": "Strong",
+    "description": "Hidden breakage in real browsers.",
+    "measure": "Error monitoring (Sentry or similar)",
+    "action": "One error on the checkout or form path outranks everything else.",
+    "first_party": "First-party worksError handler posting to your endpoint. Hosted error tools are easier."
+  },
+  {
+    "id": "synthetic-check-pass-rate",
+    "family": "performance",
+    "name": "Synthetic check pass rate",
+    "tier": "Strong",
+    "description": "Scripted run of contact form, search, checkout every few minutes.",
+    "measure": "Synthetic monitoring tool",
+    "action": "A failed check on a revenue path: treat as an outage.",
+    "first_party": "Possible, not advisedPossible with a scheduled job, but running it inside your own infrastructure shares its failure."
+  },
+  {
+    "id": "cdn-cache-hit-ratio",
+    "family": "performance",
+    "name": "CDN cache hit ratio",
+    "tier": "Niche",
+    "description": "Share of requests served without hitting your server.",
+    "measure": "CDN dashboard",
+    "action": "Low ratio: fix cache headers, long-cache static assets.",
+    "first_party": "Best first-partyCDN and origin logs."
+  },
+  {
+    "id": "server-latency-at-p95",
+    "family": "performance",
+    "name": "Server latency at p95",
+    "tier": "Niche",
+    "description": "What the slowest 5% of requests experience.",
+    "measure": "Application monitoring",
+    "action": "p95 far above the median: look for slow queries and cold starts.",
+    "first_party": "Best first-partyYour own application timing."
+  },
+  {
+    "id": "lighthouse-score",
+    "family": "performance",
+    "name": "Lighthouse score",
+    "tier": "Niche",
+    "description": "A single lab run, easy to game and noisy.",
+    "measure": "Lighthouse",
+    "action": "Use it to find issues. Do not report it as a KPI.",
+    "first_party": "First-party worksRuns in your own build pipeline. Still a lab score."
+  },
+  {
+    "id": "organic-clicks",
+    "family": "seo",
+    "name": "Organic clicks",
+    "tier": "Core",
+    "description": "Visits earned from Google.",
+    "measure": "Search Console Performance report",
+    "action": "Compare 28 days against the previous period and the same period last year.",
+    "first_party": "First-party worksCount visits with a search-engine referrer. This sees clicks, not queries. Search Console stays the query source."
+  },
+  {
+    "id": "impressions",
+    "family": "seo",
+    "name": "Impressions",
+    "tier": "Core",
+    "description": "Visibility, before the click.",
+    "measure": "Search Console Performance report",
+    "action": "Rising impressions with flat clicks is a title or snippet problem.",
+    "first_party": "Not first-partyOnly Google knows how often you appeared."
+  },
+  {
+    "id": "click-through-rate",
+    "family": "seo",
+    "name": "Click-through rate",
+    "tier": "Core",
+    "description": "How often an appearance becomes a visit.",
+    "measure": "Search Console (clicks divided by impressions)",
+    "action": "Pages with high impressions and low CTR: rewrite title and description.",
+    "first_party": "Not first-partyNeeds impressions, which only Google holds."
+  },
+  {
+    "id": "average-position",
+    "family": "seo",
+    "name": "Average position",
+    "tier": "Core",
+    "description": "Typical ranking. An average that hides spread.",
+    "measure": "Search Console, by query or page",
+    "action": "Judge by page and query, never only sitewide.",
+    "first_party": "Not first-partyOnly Google or a rank tracker knows your rank."
+  },
+  {
+    "id": "striking-distance-queries",
+    "family": "seo",
+    "name": "Striking-distance queries",
+    "tier": "Niche",
+    "description": "Queries ranking roughly 8 to 20 with real impressions. The cheapest gains.",
+    "measure": "Search Console filter on position",
+    "action": "Add internal links, expand the page, and improve the title for these first.",
+    "first_party": "Not first-partyNeeds query and position data from Search Console."
+  },
+  {
+    "id": "branded-versus-non-branded-clicks",
+    "family": "seo",
+    "name": "Branded versus non-branded clicks",
+    "tier": "Core",
+    "description": "Whether search finds strangers or only people who know you.",
+    "measure": "Search Console, query filter on your name",
+    "action": "Non-branded share small: build topic content for the problems you solve.",
+    "first_party": "Not first-partySearch engines no longer pass the query. Use Search Console."
+  },
+  {
+    "id": "queries-per-page",
+    "family": "seo",
+    "name": "Queries per page",
+    "tier": "Strong",
+    "description": "How many searches each page earns.",
+    "measure": "Search Console, page then queries",
+    "action": "Page ranks for a few terms only: widen coverage of related questions.",
+    "first_party": "Not first-partyQuery data lives in Search Console."
+  },
+  {
+    "id": "top-3-and-top-10-keyword-count",
+    "family": "seo",
+    "name": "Top-3 and top-10 keyword count",
+    "tier": "Strong",
+    "description": "Breadth of strong rankings.",
+    "measure": "Rank tracker or Search Console",
+    "action": "Watch the trend of the count, not single keywords (results are personalised).",
+    "first_party": "Possible, not advisedPossible by scraping results, but it breaks Google's terms and gets blocked. Use Search Console or a tracker."
+  },
+  {
+    "id": "organic-landing-page-conversions",
+    "family": "seo",
+    "name": "Organic landing page conversions",
+    "tier": "Core",
+    "description": "Which search pages earn leads and sales.",
+    "measure": "GA4 organic channel, landing page, key events",
+    "action": "Pages with traffic but no conversions need an offer; pages with conversions need more links.",
+    "first_party": "Best first-partyStored landing page and referrer joined to your own leads."
+  },
+  {
+    "id": "indexed-versus-submitted-pages",
+    "family": "seo",
+    "name": "Indexed versus submitted pages",
+    "tier": "Core",
+    "description": "Whether Google keeps the pages you want.",
+    "measure": "Search Console Page indexing report",
+    "action": "Important pages excluded: fix noindex, canonical, thin content or crawl access.",
+    "first_party": "Not first-partyIndex state is Google's. Your sitemap only tells you what you submitted."
+  },
+  {
+    "id": "crawled-not-indexed",
+    "family": "seo",
+    "name": "Crawled, not indexed",
+    "tier": "Strong",
+    "description": "Pages Google saw and passed over.",
+    "measure": "Search Console Page indexing report",
+    "action": "Large and growing: consolidate thin pages, improve quality or internal links.",
+    "first_party": "Not first-partyOnly Search Console reports this."
+  },
+  {
+    "id": "crawl-stats",
+    "family": "seo",
+    "name": "Crawl stats",
+    "tier": "Niche",
+    "description": "Crawl requests, response time and host problems.",
+    "measure": "Search Console, Crawl stats",
+    "action": "Response times rising or errors spiking: investigate hosting first.",
+    "first_party": "Best first-partyServer logs show every Googlebot request. Search Console only summarises."
+  },
+  {
+    "id": "sitemap-coverage",
+    "family": "seo",
+    "name": "Sitemap coverage",
+    "tier": "Strong",
+    "description": "Share of sitemap URLs indexed.",
+    "measure": "Search Console, Sitemaps",
+    "action": "Low coverage: remove junk URLs from the sitemap.",
+    "first_party": "Not first-partyYou know what you submitted, not what Google indexed."
+  },
+  {
+    "id": "referring-domains",
+    "family": "seo",
+    "name": "Referring domains",
+    "tier": "Core",
+    "description": "Unique sites linking to you.",
+    "measure": "Backlink tool (free tiers exist)",
+    "action": "Prefer relevant links from real sites. Count of domains beats count of links.",
+    "first_party": "Not first-partyLinks on other sites. Your logs only show links that sent a visit."
+  },
+  {
+    "id": "new-and-lost-links",
+    "family": "seo",
+    "name": "New and lost links",
+    "tier": "Strong",
+    "description": "Link velocity and decay.",
+    "measure": "Backlink tool",
+    "action": "Lost link from a strong site: ask to restore it.",
+    "first_party": "Not first-partyOther sites' pages. Needs a backlink tool."
+  },
+  {
+    "id": "anchor-text-mix",
+    "family": "seo",
+    "name": "Anchor text mix",
+    "tier": "Niche",
+    "description": "Whether links look natural.",
+    "measure": "Backlink tool",
+    "action": "Heavy exact-match anchors: stop building that kind.",
+    "first_party": "Not first-partyOther sites' pages. Needs a backlink tool."
+  },
+  {
+    "id": "orphan-pages-and-click-depth",
+    "family": "seo",
+    "name": "Orphan pages and click depth",
+    "tier": "Niche",
+    "description": "Pages with no internal links and pages buried 4 or more clicks deep.",
+    "measure": "Crawler such as Screaming Frog",
+    "action": "Link important pages from high-traffic pages, within 3 clicks of home.",
+    "first_party": "First-party worksCrawl your own site and compare to your own page list from the CMS."
+  },
+  {
+    "id": "broken-links-and-redirect-chains",
+    "family": "seo",
+    "name": "Broken links and redirect chains",
+    "tier": "Strong",
+    "description": "Wasted crawl and lost link value.",
+    "measure": "Crawler, Search Console",
+    "action": "Fix internal broken links, and point redirects straight to the final URL.",
+    "first_party": "First-party worksOwn crawl plus 404 logs."
+  },
+  {
+    "id": "duplicate-titles-and-descriptions",
+    "family": "seo",
+    "name": "Duplicate titles and descriptions",
+    "tier": "Strong",
+    "description": "Pages that cannot be told apart.",
+    "measure": "Crawler",
+    "action": "Rewrite duplicates, starting with pages that earn impressions.",
+    "first_party": "First-party worksOwn crawl or a build-time check."
+  },
+  {
+    "id": "keyword-cannibalization",
+    "family": "seo",
+    "name": "Keyword cannibalization",
+    "tier": "Niche",
+    "description": "Two of your pages competing for one query.",
+    "measure": "Search Console, query then pages",
+    "action": "Merge pages, or differentiate their intent and cross-link.",
+    "first_party": "Not first-partyNeeds query data per page."
+  },
+  {
+    "id": "structured-data-validity",
+    "family": "seo",
+    "name": "Structured data validity",
+    "tier": "Strong",
+    "description": "Whether markup passes and shows rich results.",
+    "measure": "Search Console Enhancements, Rich Results Test",
+    "action": "Errors on a template: fix once, many pages recover.",
+    "first_party": "First-party worksValidate markup in your build. Google's report shows what Google saw."
+  },
+  {
+    "id": "serp-feature-ownership",
+    "family": "seo",
+    "name": "SERP feature ownership",
+    "tier": "Niche",
+    "description": "Featured snippets, people-also-ask, local pack.",
+    "measure": "Rank tracker with SERP features",
+    "action": "A snippet owned by a rival: restructure the answer in 40 to 60 words with a clear heading.",
+    "first_party": "Not first-partyNeeds result-page data."
+  },
+  {
+    "id": "zero-click-share",
+    "family": "seo",
+    "name": "Zero-click share",
+    "tier": "Niche",
+    "description": "Queries answered without any click.",
+    "measure": "Rank tracker or Search Console CTR by query type",
+    "action": "Do not chase clicks on queries that never click. Target decisions.",
+    "first_party": "Not first-partyNeeds result-page data."
+  },
+  {
+    "id": "content-decay",
+    "family": "seo",
+    "name": "Content decay",
+    "tier": "Niche",
+    "description": "Pages losing clicks year on year.",
+    "measure": "Search Console, compare periods by page",
+    "action": "Refresh the top decaying pages: update facts, add sections, relink.",
+    "first_party": "First-party worksYour own search-referred visits per page over time."
+  },
+  {
+    "id": "citations-in-ai-answers",
+    "family": "seo",
+    "name": "Citations in AI answers",
+    "tier": "Niche",
+    "description": "Whether answer engines name you.",
+    "measure": "Manual checks of target questions, or a visibility tool",
+    "action": "Absent: add clear definitions, data, authorship and schema to key pages.",
+    "first_party": "Not first-partyThe answers live on the assistant's side. Check manually or with a tool."
+  },
+  {
+    "id": "google-business-profile-views-calls-and-directions",
+    "family": "seo",
+    "name": "Google Business Profile views, calls and directions",
+    "tier": "Core",
+    "description": "Local demand actions.",
+    "measure": "Business Profile Performance",
+    "action": "Low calls for views: fix category, hours, photos, phone number.",
+    "first_party": "Not first-partyHeld by Google."
+  },
+  {
+    "id": "review-count-rating-and-velocity",
+    "family": "seo",
+    "name": "Review count, rating and velocity",
+    "tier": "Core",
+    "description": "Local trust and ranking signal.",
+    "measure": "Business Profile, review platforms",
+    "action": "Slow velocity: ask every happy customer. Reply to all reviews.",
+    "first_party": "Not first-partyHeld by review platforms."
+  },
+  {
+    "id": "review-response-rate",
+    "family": "seo",
+    "name": "Review response rate",
+    "tier": "Strong",
+    "description": "Whether you engage.",
+    "measure": "Business Profile",
+    "action": "Reply within a few days. Aim for every review.",
+    "first_party": "Not first-partyHeld by review platforms."
+  },
+  {
+    "id": "name-address-phone-consistency",
+    "family": "seo",
+    "name": "Name, address, phone consistency",
+    "tier": "Strong",
+    "description": "Match across directories.",
+    "measure": "Listing audit tool or manual check",
+    "action": "Fix mismatches on the major directories first.",
+    "first_party": "Not first-partyYour master record is first-party, but the comparison needs outside directories."
+  },
+  {
+    "id": "local-ranking-grid",
+    "family": "seo",
+    "name": "Local ranking grid",
+    "tier": "Niche",
+    "description": "Rank by neighbourhood around the business.",
+    "measure": "Local rank grid tools",
+    "action": "Weak zones: add location content and reviews from those areas.",
+    "first_party": "Not first-partyNeeds location-specific result data."
+  },
+  {
+    "id": "rank-volatility",
+    "family": "seo",
+    "name": "Rank volatility",
+    "tier": "Niche",
+    "description": "Whether movement is you or a Google update.",
+    "measure": "Volatility index from rank-tracking tools",
+    "action": "Wide volatility on a known update date: wait before changing anything.",
+    "first_party": "Not first-partyNeeds many keywords tracked across sites."
+  },
+  {
+    "id": "conversions-assisted-by-content",
+    "family": "content",
+    "name": "Conversions assisted by content",
+    "tier": "Core",
+    "description": "Revenue and leads touched by articles and guides.",
+    "measure": "GA4 conversion paths, landing page then key event",
+    "action": "Double down on the topics that appear in winning paths.",
+    "first_party": "First-party worksStored touches per visitor, if you keep them."
+  },
+  {
+    "id": "organic-entrances-per-piece",
+    "family": "content",
+    "name": "Organic entrances per piece",
+    "tier": "Strong",
+    "description": "Search traffic per article.",
+    "measure": "GA4 landing page, organic",
+    "action": "Pieces with none after 6 months: improve, merge or remove.",
+    "first_party": "First-party worksSearch-referred first pages by URL."
+  },
+  {
+    "id": "read-completion",
+    "family": "content",
+    "name": "Read completion",
+    "tier": "Strong",
+    "description": "Readers who reach the end.",
+    "measure": "Scroll depth 90% plus engagement time",
+    "action": "Low completion on long pieces: add summary, tighter intro, subheads.",
+    "first_party": "First-party worksScroll plus time events."
+  },
+  {
+    "id": "newsletter-signups-per-piece",
+    "family": "content",
+    "name": "Newsletter signups per piece",
+    "tier": "Strong",
+    "description": "Content that builds the list.",
+    "measure": "GA4 event with page as dimension",
+    "action": "Place signup prompts in the best performers.",
+    "first_party": "Best first-partyThe signup record stores the page it came from."
+  },
+  {
+    "id": "backlinks-earned-per-piece",
+    "family": "content",
+    "name": "Backlinks earned per piece",
+    "tier": "Strong",
+    "description": "Content that others cite.",
+    "measure": "Backlink tool, by URL",
+    "action": "Repeat the formats that earn links: data, tools, original research.",
+    "first_party": "Not first-partyLinks on other sites."
+  },
+  {
+    "id": "time-to-first-ranking",
+    "family": "content",
+    "name": "Time to first ranking",
+    "tier": "Niche",
+    "description": "How long a new page takes to appear.",
+    "measure": "Search Console, first impression date",
+    "action": "Slow: improve internal links to new pages, publish with a plan for links.",
+    "first_party": "First-party worksProxy only: date of the first search-referred visit."
+  },
+  {
+    "id": "topic-cluster-coverage",
+    "family": "content",
+    "name": "Topic cluster coverage",
+    "tier": "Niche",
+    "description": "Share of the questions in your topic that you answer.",
+    "measure": "Keyword research against site pages",
+    "action": "Gaps in the cluster: write the missing pages that link to the hub.",
+    "first_party": "First-party worksYour content inventory against a topic list."
+  },
+  {
+    "id": "content-refresh-rate",
+    "family": "content",
+    "name": "Content refresh rate",
+    "tier": "Niche",
+    "description": "How much of the top content is updated yearly.",
+    "measure": "Content inventory",
+    "action": "Top 20 pages unchanged for a year: schedule updates.",
+    "first_party": "Best first-partyCMS last-modified dates. Nobody else has them."
+  },
+  {
+    "id": "reader-return-within-30-days",
+    "family": "content",
+    "name": "Reader return within 30 days",
+    "tier": "Niche",
+    "description": "Whether content builds habit.",
+    "measure": "GA4 user cohorts",
+    "action": "Low: add related reading and email follow-up.",
+    "first_party": "First-party worksFirst-party ID. Cookie lifespan limits it."
+  },
+  {
+    "id": "social-shares-and-saves",
+    "family": "content",
+    "name": "Social shares and saves",
+    "tier": "Niche",
+    "description": "Resonance. A weak substitute for outcomes.",
+    "measure": "Platform analytics",
+    "action": "Use as a tie-breaker, not a goal.",
+    "first_party": "Not first-partyHeld by the platforms."
+  },
+  {
+    "id": "cost-per-piece-and-content-roi",
+    "family": "content",
+    "name": "Cost per piece and content ROI",
+    "tier": "Strong",
+    "description": "Return on production spend.",
+    "measure": "Production cost against attributed revenue",
+    "action": "Stop formats that never return their cost.",
+    "first_party": "First-party worksYour costs against your own conversions."
+  },
+  {
+    "id": "activation-rate",
+    "family": "retention",
+    "name": "Activation rate",
+    "tier": "Core",
+    "description": "New sign-ups who reach the first valuable action.",
+    "measure": "Product events as a share of sign-ups",
+    "action": "Low activation: cut steps and add a guided first task.",
+    "first_party": "Best first-partyProduct events in your own database."
+  },
+  {
+    "id": "time-to-value",
+    "family": "retention",
+    "name": "Time to value",
+    "tier": "Strong",
+    "description": "How long until a user gets a result.",
+    "measure": "Median time from sign-up to key action",
+    "action": "Long time: remove setup, add templates and defaults.",
+    "first_party": "Best first-partyTimestamps in your own database."
+  },
+  {
+    "id": "cohort-retention-curve",
+    "family": "retention",
+    "name": "Cohort retention curve",
+    "tier": "Core",
+    "description": "Share of each sign-up month still active over time.",
+    "measure": "Cohort analysis in GA4 or product analytics",
+    "action": "Curve that never flattens means a leak. Fix onboarding before acquisition.",
+    "first_party": "Best first-partyYour own user and event tables."
+  },
+  {
+    "id": "churn-rate",
+    "family": "retention",
+    "name": "Churn rate",
+    "tier": "Core",
+    "description": "Customers or revenue lost per period.",
+    "measure": "Billing system",
+    "action": "Rising churn: interview leavers and review the first 30 days.",
+    "first_party": "Best first-partyBilling records."
+  },
+  {
+    "id": "net-revenue-retention",
+    "family": "retention",
+    "name": "Net revenue retention",
+    "tier": "Strong",
+    "description": "Revenue from existing customers after upgrades and losses.",
+    "measure": "Billing system",
+    "action": "Under 100%: the base shrinks even with new sales.",
+    "first_party": "Best first-partyBilling records."
+  },
+  {
+    "id": "active-users-and-stickiness",
+    "family": "retention",
+    "name": "Active users and stickiness",
+    "tier": "Strong",
+    "description": "Daily over monthly active users.",
+    "measure": "Product analytics",
+    "action": "Low stickiness: build reasons to return, not more features.",
+    "first_party": "Best first-partyYour own event tables."
+  },
+  {
+    "id": "feature-adoption",
+    "family": "retention",
+    "name": "Feature adoption",
+    "tier": "Strong",
+    "description": "Share of users using each feature.",
+    "measure": "Product events",
+    "action": "Unused features: remove or promote. Heavily used ones: invest.",
+    "first_party": "Best first-partyYour own product events."
+  },
+  {
+    "id": "account-sign-up-completion",
+    "family": "retention",
+    "name": "Account sign-up completion",
+    "tier": "Strong",
+    "description": "Registrations started that finish.",
+    "measure": "GA4 funnel",
+    "action": "Drop at verification: check email delivery and form length.",
+    "first_party": "Best first-partyServer-side registration events."
+  },
+  {
+    "id": "login-failure-rate",
+    "family": "retention",
+    "name": "Login failure rate",
+    "tier": "Niche",
+    "description": "Users who cannot get in.",
+    "measure": "Auth logs",
+    "action": "High rate: improve reset flow, add passwordless sign-in.",
+    "first_party": "Best first-partyYour authentication logs."
+  },
+  {
+    "id": "net-promoter-score",
+    "family": "retention",
+    "name": "Net Promoter Score",
+    "tier": "Strong",
+    "description": "Willingness to recommend. Read the comments, not just the score.",
+    "measure": "Short survey",
+    "action": "Follow up with detractors within two days.",
+    "first_party": "First-party worksYour own survey form, or a survey tool."
+  },
+  {
+    "id": "customer-satisfaction-and-effort-scores",
+    "family": "retention",
+    "name": "Customer satisfaction and effort scores",
+    "tier": "Strong",
+    "description": "Satisfaction and ease after a specific interaction.",
+    "measure": "Post-support or post-purchase survey",
+    "action": "Low effort scores point to the exact process to simplify.",
+    "first_party": "First-party worksYour own post-interaction survey."
+  },
+  {
+    "id": "support-tickets-per-1-000-sessions",
+    "family": "retention",
+    "name": "Support tickets per 1,000 sessions",
+    "tier": "Niche",
+    "description": "Friction the pages do not explain.",
+    "measure": "Helpdesk count over GA4 sessions",
+    "action": "Cluster of tickets on one topic: fix the page or flow that causes it.",
+    "first_party": "First-party worksHelpdesk export divided by your own sessions."
+  },
+  {
+    "id": "help-doc-deflection",
+    "family": "retention",
+    "name": "Help-doc deflection",
+    "tier": "Niche",
+    "description": "Help views that do not become tickets.",
+    "measure": "Helpdesk plus docs analytics",
+    "action": "Low deflection: rewrite the top articles in plain steps.",
+    "first_party": "First-party worksYour docs views set against tickets."
+  },
+  {
+    "id": "reactivation-rate",
+    "family": "retention",
+    "name": "Reactivation rate",
+    "tier": "Niche",
+    "description": "Lapsed customers who return.",
+    "measure": "CRM or billing",
+    "action": "Time win-back email to the usual lapse point.",
+    "first_party": "Best first-partyCRM and billing."
+  },
+  {
+    "id": "referral-and-share-rate",
+    "family": "retention",
+    "name": "Referral and share rate",
+    "tier": "Niche",
+    "description": "Customers who bring others.",
+    "measure": "Referral links, post-purchase survey",
+    "action": "Low: simplify the ask and reward both sides.",
+    "first_party": "Best first-partyYour own referral codes and links."
+  },
+  {
+    "id": "email-click-through-rate",
+    "family": "channels",
+    "name": "Email click-through rate",
+    "tier": "Core",
+    "description": "Subscribers who clicked.",
+    "measure": "Email platform",
+    "action": "Test subject, offer and link position. Open rate is not a reliable substitute.",
+    "first_party": "First-party worksClick-redirect links through your own domain. The email platform also reports it."
+  },
+  {
+    "id": "click-to-open-rate",
+    "family": "channels",
+    "name": "Click-to-open rate",
+    "tier": "Strong",
+    "description": "Content quality among those who opened.",
+    "measure": "Clicks divided by opens",
+    "action": "Low rate with healthy opens: the content or call to action misses.",
+    "first_party": "Possible, not advisedDepends on open tracking, which privacy features distort."
+  },
+  {
+    "id": "open-rate",
+    "family": "channels",
+    "name": "Open rate",
+    "tier": "Niche",
+    "description": "Distorted by mail privacy features that pre-load images.",
+    "measure": "Email platform",
+    "action": "Use only to compare sends under the same conditions.",
+    "first_party": "Possible, not advisedA tracking pixel is possible but unreliable. Do not build it."
+  },
+  {
+    "id": "net-list-growth",
+    "family": "channels",
+    "name": "Net list growth",
+    "tier": "Core",
+    "description": "New subscribers less unsubscribes and bounces.",
+    "measure": "Email platform",
+    "action": "Shrinking list: add on-site capture and a welcome series.",
+    "first_party": "Best first-partyYour own subscriber database."
+  },
+  {
+    "id": "revenue-per-email",
+    "family": "channels",
+    "name": "Revenue per email",
+    "tier": "Strong",
+    "description": "Money earned by each send.",
+    "measure": "Email platform with ecommerce tracking",
+    "action": "Send more of what earns and less of what only gets opened.",
+    "first_party": "First-party worksTagged links joined to your own orders."
+  },
+  {
+    "id": "unsubscribe-and-spam-complaint-rate",
+    "family": "channels",
+    "name": "Unsubscribe and spam complaint rate",
+    "tier": "Strong",
+    "description": "Fatigue and relevance.",
+    "measure": "Email platform",
+    "action": "Complaints trending up: segment, slow down, tighten promises.",
+    "first_party": "First-party worksUnsubscribes are yours. Complaint data partly comes from mailbox providers."
+  },
+  {
+    "id": "deliverability-and-authentication",
+    "family": "channels",
+    "name": "Deliverability and authentication",
+    "tier": "Strong",
+    "description": "SPF, DKIM and DMARC pass rates and inbox placement.",
+    "measure": "DMARC reports, postmaster tools",
+    "action": "Failures: fix DNS records. Poor reputation caps all email results.",
+    "first_party": "First-party worksDMARC reports arrive at your own address. Parse them or use a free tool."
+  },
+  {
+    "id": "cost-per-click-and-click-through-rate-ads",
+    "family": "channels",
+    "name": "Cost per click and click-through rate (ads)",
+    "tier": "Strong",
+    "description": "Auction cost and ad appeal.",
+    "measure": "Ad platform",
+    "action": "Low CTR: test messages. High CPC: improve relevance and landing page.",
+    "first_party": "Not first-partyAd platform data."
+  },
+  {
+    "id": "impression-share-lost-to-budget-and-rank",
+    "family": "channels",
+    "name": "Impression share lost to budget and rank",
+    "tier": "Niche",
+    "description": "Demand you missed on search ads.",
+    "measure": "Google Ads impression share columns",
+    "action": "Lost to budget with strong ROAS: add budget. Lost to rank: improve quality.",
+    "first_party": "Not first-partyAd platform data."
+  },
+  {
+    "id": "wasted-spend-on-irrelevant-queries",
+    "family": "channels",
+    "name": "Wasted spend on irrelevant queries",
+    "tier": "Niche",
+    "description": "Share of ad spend on terms that cannot buy.",
+    "measure": "Search terms report",
+    "action": "Add negatives weekly until waste is small.",
+    "first_party": "Not first-partyThe search terms report lives with the ad platform."
+  },
+  {
+    "id": "creative-fatigue",
+    "family": "channels",
+    "name": "Creative fatigue",
+    "tier": "Niche",
+    "description": "Declining CTR with rising frequency.",
+    "measure": "Ad platform, frequency and CTR trends",
+    "action": "Refresh creative when CTR falls while frequency climbs.",
+    "first_party": "Not first-partyAd platform data."
+  },
+  {
+    "id": "landing-page-conversion-by-ad-group",
+    "family": "channels",
+    "name": "Landing page conversion by ad group",
+    "tier": "Core",
+    "description": "Whether the page keeps the promise of the ad.",
+    "measure": "GA4 session campaign, key events",
+    "action": "Low conversion on a high-spend group: match page headline to the ad.",
+    "first_party": "Best first-partyTagged landing visits joined to your own leads, free of platform self-attribution."
+  },
+  {
+    "id": "social-referral-conversion",
+    "family": "channels",
+    "name": "Social referral conversion",
+    "tier": "Strong",
+    "description": "Value of a social visit.",
+    "measure": "GA4 social channel, key events",
+    "action": "Social that does not convert may still assist. Check paths first.",
+    "first_party": "First-party worksReferrer and UTM against your own conversions."
+  },
+  {
+    "id": "followers-and-impressions",
+    "family": "channels",
+    "name": "Followers and impressions",
+    "tier": "Niche",
+    "description": "Reach. A vanity metric unless tied to clicks.",
+    "measure": "Platform analytics",
+    "action": "Track clicks to site and saves. Ignore follower counts as a goal.",
+    "first_party": "Not first-partyHeld by the platforms."
+  },
+  {
+    "id": "form-delivery-check",
+    "family": "quality",
+    "name": "Form delivery check",
+    "tier": "Niche",
+    "description": "Whether every submission reaches the inbox or CRM.",
+    "measure": "Compare GA4 form_submit with CRM entries monthly, plus a test submission weekly",
+    "action": "A gap means lost leads. Fix before spending more on traffic.",
+    "first_party": "Best first-partyOnly possible with your own records: compare stored submissions with delivered email and CRM entries."
+  },
+  {
+    "id": "tracking-health",
+    "family": "quality",
+    "name": "Tracking health",
+    "tier": "Niche",
+    "description": "Whether analytics events still fire after releases.",
+    "measure": "Test key events after every deploy, tag assistant, backend counts",
+    "action": "Sudden drop in key events at a deploy time: tracking broke.",
+    "first_party": "Best first-partyCompare backend counts with analytics counts. Only your own data can serve as the reference."
+  },
+  {
+    "id": "mobile-versus-desktop-conversion-gap",
+    "family": "quality",
+    "name": "Mobile versus desktop conversion gap",
+    "tier": "Core",
+    "description": "Whether the mobile experience works.",
+    "measure": "GA4 conversion rate by device",
+    "action": "Large gap: test the forms, menus and tap targets on real phones.",
+    "first_party": "First-party worksConversion records split by device."
+  },
+  {
+    "id": "browser-and-os-conversion-gap",
+    "family": "quality",
+    "name": "Browser and OS conversion gap",
+    "tier": "Niche",
+    "description": "A browser where the site is silently broken.",
+    "measure": "GA4 conversion rate by browser",
+    "action": "One browser far below peers: reproduce and fix.",
+    "first_party": "First-party worksConversion records split by browser."
+  },
+  {
+    "id": "broken-links-and-404-hits",
+    "family": "quality",
+    "name": "Broken links and 404 hits",
+    "tier": "Strong",
+    "description": "Dead ends for people and crawlers.",
+    "measure": "Crawler, GA4 page not found events",
+    "action": "Redirect the top 404 URLs to the best matching page.",
+    "first_party": "Best first-partyServer logs record every 404, including from external links."
+  },
+  {
+    "id": "top-referrers-to-404-pages",
+    "family": "quality",
+    "name": "Top referrers to 404 pages",
+    "tier": "Niche",
+    "description": "Who links to pages that no longer exist.",
+    "measure": "GA4 404 page with source",
+    "action": "Redirect, or ask the linking site to update.",
+    "first_party": "Best first-partyReferrer on each 404 in your logs."
+  },
+  {
+    "id": "accessibility-issues-by-severity",
+    "family": "quality",
+    "name": "Accessibility issues by severity",
+    "tier": "Strong",
+    "description": "Barriers for disabled users, and legal exposure.",
+    "measure": "Axe or Lighthouse accessibility, plus manual keyboard test",
+    "action": "Fix critical issues first: contrast, labels, focus, alt text.",
+    "first_party": "First-party worksRun axe in your own build pipeline."
+  },
+  {
+    "id": "keyboard-and-screen-reader-task-success",
+    "family": "quality",
+    "name": "Keyboard and screen-reader task success",
+    "tier": "Niche",
+    "description": "Whether the key flows can be completed without a mouse.",
+    "measure": "Manual testing",
+    "action": "Failure in checkout or contact: treat as a launch blocker.",
+    "first_party": "Not first-partyManual testing. No data to collect automatically."
+  },
+  {
+    "id": "task-success-rate",
+    "family": "quality",
+    "name": "Task success rate",
+    "tier": "Strong",
+    "description": "Share of test users who finish a defined task.",
+    "measure": "5 to 8 moderated tests",
+    "action": "Failures show exactly what to change. Repeat after the fix.",
+    "first_party": "Not first-partyComes from test sessions, not site data."
+  },
+  {
+    "id": "system-usability-scale",
+    "family": "quality",
+    "name": "System Usability Scale",
+    "tier": "Niche",
+    "description": "Standardised usability score from users.",
+    "measure": "10-question survey",
+    "action": "Use to compare versions over time.",
+    "first_party": "First-party worksYour own survey form."
+  },
+  {
+    "id": "certificate-and-domain-expiry-days",
+    "family": "quality",
+    "name": "Certificate and domain expiry days",
+    "tier": "Strong",
+    "description": "Outages caused by expiry.",
+    "measure": "Monitor with alert at 30 days",
+    "action": "Alert fires: renew. Turn on auto-renew.",
+    "first_party": "First-party worksA scheduled script on your side. An outside monitor also works."
+  },
+  {
+    "id": "mixed-content-and-security-headers",
+    "family": "quality",
+    "name": "Mixed content and security headers",
+    "tier": "Niche",
+    "description": "Browser warnings and basic protections.",
+    "measure": "Browser console, header checker",
+    "action": "Fix warnings and missing headers; they affect trust and ranking signals.",
+    "first_party": "First-party worksA check in your build pipeline."
+  },
+  {
+    "id": "page-feedback-score",
+    "family": "quality",
+    "name": "Page feedback score",
+    "tier": "Niche",
+    "description": "Visitor ratings of whether a page helped.",
+    "measure": "On-page feedback widget",
+    "action": "Low scores on high-traffic pages: rewrite those first.",
+    "first_party": "Best first-partyYour own widget stores answers per page."
+  },
+  {
+    "id": "readability-grade",
+    "family": "quality",
+    "name": "Readability grade",
+    "tier": "Niche",
+    "description": "How easy the copy is to read.",
+    "measure": "Readability checker",
+    "action": "Dense service pages: shorter sentences, plain words.",
+    "first_party": "First-party worksA script over your own text."
+  },
+  {
+    "id": "consent-opt-in-rate",
+    "family": "trust",
+    "name": "Consent opt-in rate",
+    "tier": "Strong",
+    "description": "Share of visitors who accept analytics cookies.",
+    "measure": "Consent platform",
+    "action": "Low rate means GA4 undercounts. Use modeled data and server-side events.",
+    "first_party": "First-party worksYour banner can log choices without personal data. Consent platforms report it too."
+  },
+  {
+    "id": "share-of-sessions-with-no-measurement",
+    "family": "trust",
+    "name": "Share of sessions with no measurement",
+    "tier": "Niche",
+    "description": "Gap caused by consent refusal and blockers.",
+    "measure": "Compare server logs or backend orders with GA4 totals",
+    "action": "Large gap: report ranges, and rely on backend revenue for decisions.",
+    "first_party": "Best first-partyServer logs against client analytics reveal the gap. Third-party tools cannot see what they missed."
+  },
+  {
+    "id": "ad-blocker-rate",
+    "family": "trust",
+    "name": "Ad-blocker rate",
+    "tier": "Niche",
+    "description": "Visitors hidden from your tags.",
+    "measure": "Server logs against client analytics",
+    "action": "High among technical audiences: consider first-party tagging.",
+    "first_party": "Best first-partyServer-side requests compared with client-side events."
+  },
+  {
+    "id": "bot-and-spam-traffic-share",
+    "family": "trust",
+    "name": "Bot and spam traffic share",
+    "tier": "Strong",
+    "description": "Traffic that is not human.",
+    "measure": "GA4 filters, WAF, server logs",
+    "action": "Spikes with 0% engagement: block, and exclude from reports.",
+    "first_party": "Best first-partyLogs show bots that never run your scripts, so client analytics cannot see them."
+  },
+  {
+    "id": "form-spam-rate",
+    "family": "trust",
+    "name": "Form spam rate",
+    "tier": "Strong",
+    "description": "Junk submissions.",
+    "measure": "Form tool, CRM",
+    "action": "High: add honeypot, rate limit or invisible challenge. Do not add friction for real users.",
+    "first_party": "Best first-partyYour server logs dropped submissions, such as honeypot hits."
+  },
+  {
+    "id": "blocked-requests-by-the-firewall",
+    "family": "trust",
+    "name": "Blocked requests by the firewall",
+    "tier": "Niche",
+    "description": "Attack pressure.",
+    "measure": "WAF or CDN dashboard",
+    "action": "A sudden rise: check for credential stuffing or scraping.",
+    "first_party": "First-party worksWAF or CDN logs you control."
+  },
+  {
+    "id": "vulnerable-dependency-count",
+    "family": "trust",
+    "name": "Vulnerable dependency count",
+    "tier": "Niche",
+    "description": "Known security flaws in your code.",
+    "measure": "Dependency scanner",
+    "action": "Critical findings: patch within days.",
+    "first_party": "First-party worksScanner in your own pipeline."
+  },
+  {
+    "id": "email-authentication-pass-rate",
+    "family": "trust",
+    "name": "Email authentication pass rate",
+    "tier": "Strong",
+    "description": "Spoofing risk and deliverability.",
+    "measure": "DMARC report",
+    "action": "Move DMARC policy toward enforcement once reports are clean.",
+    "first_party": "First-party worksDMARC reports to your own address."
+  },
+  {
+    "id": "privacy-request-turnaround",
+    "family": "trust",
+    "name": "Privacy request turnaround",
+    "tier": "Niche",
+    "description": "Time to honour access and deletion requests.",
+    "measure": "Request log",
+    "action": "Slow turnaround is a compliance risk: set a process.",
+    "first_party": "Best first-partyYour own request log."
+  }
+]

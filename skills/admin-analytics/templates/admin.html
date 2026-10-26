@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Private admin dashboard.">
+<title>Admin · {{PROJECT_NAME}}</title>
+<link rel="stylesheet" href="/admin/admin.css">
+<script src="/admin/admin.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to dashboard</a>
+
+<section class="admin-gate" id="unlock-panel" aria-labelledby="unlock-title">
+  <form class="admin-gate-card" id="unlock-form">
+    <a class="brand" href="/" aria-label="{{PROJECT_NAME}} home"><span class="brand-mark" aria-hidden="true"></span><span>{{PROJECT_NAME}}</span></a>
+    <p class="eyebrow">Admin</p>
+    <h1 id="unlock-title">Back office</h1>
+    <label for="admin-token">Admin access token</label>
+    <div class="token-row">
+      <input id="admin-token" type="password" autocomplete="current-password" required spellcheck="false" placeholder="Paste the server-configured token">
+      <button class="admin-btn primary" type="submit">Open</button>
+    </div>
+    <p class="form-note" id="unlock-note" aria-live="polite">Kept only for this browser tab. Everything here is anonymous, aggregated first-party data.</p>
+    <a class="admin-back" href="/">Back to site</a>
+  </form>
+</section>
+
+<div class="admin-shell" id="dashboard" hidden>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="{{PROJECT_NAME}} home"><span class="brand-mark" aria-hidden="true"></span><span>{{PROJECT_NAME}}</span><i>Back office</i></a>
+    <span class="live-label" id="updated-at">Loading…</span>
+    <div class="topbar-actions">
+      <button type="button" class="admin-btn" id="refresh">Refresh</button>
+      <a class="admin-btn" href="/">Back to site</a>
+    </div>
+  </header>
+  <main class="admin-body" id="content">
+    <div class="page-head"><p class="eyebrow">Last 30 days</p><h1 id="dashboard-title" tabindex="-1">Overview</h1></div>
+    <div class="admin-tab-row">
+      <nav class="admin-tabs" id="admin-navigation" aria-label="Dashboard sections"></nav>
+      <button type="button" class="admin-btn admin-export" id="export" title="Download this page as a CSV file">Export CSV</button>
+    </div>
+    <p class="form-note error" id="load-error" role="alert" hidden></p>
+    <div id="view"></div>
+    <p class="privacy-note">Counts are anonymous and aggregated. A measured zero is shown as zero; a metric with no data yet says so instead of guessing.</p>
+  </main>
+</div>
+</body>
+</html>
